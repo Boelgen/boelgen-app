@@ -59,8 +59,6 @@ export default function App() {
               iconName = 'information-circle';
             } else if (route.name === 'Mere') {
               iconName = 'menu';
-            } else if (route.name === 'Kontakter') {
-              iconName = 'contacts';
             }
 
             return <Ionicons name={iconName} size={size} color={color} />;
