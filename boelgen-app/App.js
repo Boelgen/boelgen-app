@@ -4,18 +4,10 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
+import HomeScreen from './HomeScreen';
 
 // Create a bottom tab navigator
 const Tab = createBottomTabNavigator();
-
-// Define the screens for each tab
-function HomeScreen() {
-  return (
-    <View style={styles.container}>
-      <Text>Hjemeskærm</Text>
-    </View>
-  );
-}
 
 function CalendarScreen() {
   return (
@@ -67,6 +59,8 @@ export default function App() {
               iconName = 'information-circle';
             } else if (route.name === 'Mere') {
               iconName = 'menu';
+            } else if (route.name === 'Kontakter') {
+              iconName = 'contacts';
             }
 
             return <Ionicons name={iconName} size={size} color={color} />;
