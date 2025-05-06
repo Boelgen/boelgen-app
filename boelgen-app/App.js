@@ -54,7 +54,7 @@ function HomeScreen() {
         renderItem={({ item }) => (
           <View style={styles.eventItem}>
             <Image source={{ uri: item.image }} style={styles.eventImage} />
-            <Text style={styles.eventTitle}>{item.name}</Text>
+            <Text style={styles.eventTitle}>{item.title}</Text>
             <Text>{item.date}</Text>
             <Text>{item.description}</Text>
             <Text style={styles.eventPrice}>Price: {item.price} DKK</Text>
