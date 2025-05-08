@@ -8,7 +8,7 @@ export default function AboutScreen() {
       contentContainerStyle={styles.contentContainer}
     >
       <Image
-        source={require("./assets/boelgen_banner.png")}
+        source={require("../assets/boelgen_banner.png")}
         style={styles.banner}
         resizeMode="contain"
       />

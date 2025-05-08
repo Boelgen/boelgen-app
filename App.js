@@ -7,11 +7,11 @@ import { Ionicons } from "@expo/vector-icons";
 import { Image } from "react-native";
 
 // Import the screens
-import HomeScreen from "./HomeScreen";
-import CalendarScreen from "./CalendarScreen";
-import SearchScreen from "./SearchScreen";
-import AboutScreen from "./AboutScreen";
-import MoreScreen from "./MoreScreen";
+import HomeScreen from "./screens/HomeScreen";
+import CalendarScreen from "./screens/CalendarScreen";
+import SearchScreen from "./screens/SearchScreen";
+import AboutScreen from "./screens/AboutScreen";
+import MoreScreen from "./screens/MoreScreen";
 
 // Create a bottom tab navigator
 const Tab = createBottomTabNavigator();
