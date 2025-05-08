@@ -4,6 +4,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
+import { Image } from "react-native";
 
 // Import the screens
 import HomeScreen from "./HomeScreen";
@@ -37,8 +38,15 @@ export default function App() {
 
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: "black",
-          tabBarInactiveTintColor: "gray",
+          tabBarActiveTintColor: "#1e73be",
+          tabBarInactiveTintColor: "black",
+          headerStyle: {
+            backgroundColor: "#1e73be", // Change this to your desired header background color
+          },
+          tabBarStyle: {
+            backgroundColor: "#FFFF", // Change this to your desired bottom tab background color
+          },
+          headerTintColor: "#fff", // Change this to your desired header text/icon color
         })}
       >
         <Tab.Screen name="Hjem" component={HomeScreen} />
