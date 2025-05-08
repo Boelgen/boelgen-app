@@ -25,7 +25,6 @@ export default function SearchScreen() {
 
   return (
     <View style={styles.container}>
-      <Text>Søgning</Text>
       <TextInput
         style={{
           height: 40,
