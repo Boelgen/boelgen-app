@@ -17,7 +17,7 @@ export default function HomeScreen() {
     // Fetch events from the backend
     const fetchEvents = async () => {
       try {
-        const response = await fetch("http://192.168.0.107:8080/api/events"); // Replace with your actual backend URL
+        const response = await fetch(`${process.env.EXPO_PUBLIC_BACKEND_URL}/api/events`);
         const data = await response.json();
         setEvents(data);
       } catch (error) {
