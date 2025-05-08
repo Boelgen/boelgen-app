@@ -39,13 +39,20 @@ export default function CalendarScreen() {
 
   const selectedEvents = selectedStartDate ? getEventsForDate(selectedStartDate) : [];
 
+  const formatDate = (date) => {
+    if (!date) return "";
+  
+    const options = { weekday: "long", day: "numeric", month: "long", year: "numeric" };
+    return new Intl.DateTimeFormat("da-DK", options).format(date);
+  };
+
   if (loading) {
     return <ActivityIndicator size="large" color="#0000ff" />;
   }
 
   const customDatesStyles = events.map(event => ({
     date: new Date(event.date),
-    style: { backgroundColor: "green" },
+    style: { backgroundColor: "#e750a1" },
     textStyle: { color: "white" },
   }));
   
@@ -55,10 +62,15 @@ export default function CalendarScreen() {
       <Text style={styles.header}>Bølgens kalender</Text>
       <CalendarPicker
         onDateChange={onDateChange}
-        todayBackgroundColor="#171717"
+        todayBackgroundColor="#ffffff"
+        todayTextStyle={{fontWeight: 'bold', color: 'black'}}
         selectedDayColor="#1e73be"
         selectedDayTextColor="#ffffff"
+
+        scrollable={true}
+        scrollDecelarationRate="fast"
         startFromMonday={true}
+
         weekdays={["Man", "Tirs", "Ons", "Tors", "Fre", "Lør", "Søn"]}
         months={[
           "Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December",
@@ -68,7 +80,7 @@ export default function CalendarScreen() {
         customDatesStyles={customDatesStyles}
       />
       <View style={styles.selectedDateContainer}>
-        <Text>Valgte dag er {startDate}</Text>
+        <Text>Valgte dag er {formatDate(selectedStartDate)}</Text>
         {selectedEvents.length > 0 ? (
           selectedEvents.map((event, index) => (
             <View key={index} style={styles.eventContainer}>
@@ -77,7 +89,7 @@ export default function CalendarScreen() {
             </View>
           ))
         ) : (
-          <Text>No events on this date.</Text>
+          <Text>Kalenderen er tom.</Text>
         )}
       </View>
     </View>
