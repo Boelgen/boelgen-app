@@ -10,7 +10,7 @@ export default function SearchScreen() {
     if (query.length > 0) {
       try {
         const response = await fetch(
-          `http://192.168.0.107:8080/api/events/search?query=${query}`
+          `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/events/search?query=${query}`
         );
         const data = await response.json();
         setEvents(data);
