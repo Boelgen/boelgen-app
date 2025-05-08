@@ -8,7 +8,7 @@ export default function CalendarScreen() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BACKEND}/api/events`)
+    fetch(`${process.env.EXPO_PUBLIC_BACKEND_URL}/api/events`)
       .then((response) => {
         if (!response.ok) {
           return response.text().then((text) => {
