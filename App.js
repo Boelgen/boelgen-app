@@ -12,6 +12,7 @@ import CalendarScreen from "./screens/CalendarScreen";
 import SearchScreen from "./screens/SearchScreen";
 import AboutScreen from "./screens/AboutScreen";
 import MoreScreen from "./screens/MoreScreen";
+import InformationScreen from "./screens/InformationScreen";
 
 // Create a bottom tab navigator
 const Tab = createBottomTabNavigator();
@@ -30,7 +31,7 @@ export default function App() {
               iconName = "calendar";
             } else if (route.name === "Søg") {
               iconName = "search";
-            } else if (route.name === "Om os") {
+            } else if (route.name === "Info") {
               iconName = "information-circle";
             } else if (route.name === "Mere") {
               iconName = "menu";
@@ -52,7 +53,7 @@ export default function App() {
         <Tab.Screen name="Hjem" component={HomeScreen} />
         <Tab.Screen name="Kalender" component={CalendarScreen} />
         <Tab.Screen name="Søg" component={SearchScreen} />
-        <Tab.Screen name="Om os" component={AboutScreen} />
+        <Tab.Screen name="Info" component={InformationScreen} />
         <Tab.Screen name="Mere" component={MoreScreen} />
       </Tab.Navigator>
       <StatusBar style="auto" />
