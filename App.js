@@ -12,9 +12,49 @@ import CalendarScreen from "./screens/CalendarScreen";
 import SearchScreen from "./screens/SearchScreen";
 import AboutScreen from "./screens/AboutScreen";
 import MoreScreen from "./screens/MoreScreen";
+import EventScreen from "./screens/EventScreen";
 
 // Create a bottom tab navigator
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+function MoreStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Mere"
+        component={MoreScreen}
+        options={{ title: "Mere" }}
+      />
+      <Stack.Screen
+        name="Activities"
+        component={ActivitiesScreen}
+        options={{ title: "Aktiviteter" }}
+      />
+      <Stack.Screen
+        name="Workshop"
+        component={WorkshopScreen}
+        options={{ title: "Workshops" }}
+      />
+      <Stack.Screen
+        name="Event"
+        component={EventScreen}
+        options={{ title: "Events" }}
+      />
+      <Stack.Screen
+        name="Jazz"
+        component={JazzScreen}
+        options={{ title: "Jazz" }}
+      />
+      <Stack.Screen
+        name="Lecture"
+        component={LectureScreen}
+        options={{ title: "Foredrag" }}
+      />
+    </Stack.Navigator>
+  );
+}
 
 export default function App() {
   return (
@@ -53,7 +93,7 @@ export default function App() {
         <Tab.Screen name="Kalender" component={CalendarScreen} />
         <Tab.Screen name="Søg" component={SearchScreen} />
         <Tab.Screen name="Om os" component={AboutScreen} />
-        <Tab.Screen name="Mere" component={MoreScreen} />
+        <Tab.Screen name="Mere" component={MoreStack} />
       </Tab.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
