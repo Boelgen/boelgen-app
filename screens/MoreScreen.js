@@ -1,10 +1,14 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View, Button } from "react-native";
 
-export default function MoreScreen() {
+export default function MoreScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text>Mere/indstillinger</Text>
+      <Button
+        title="Offentlige Foredrag"
+        onPress={() => navigation.navigate("Lecture")}
+        color="#1e73be"
+      />
     </View>
   );
 }
