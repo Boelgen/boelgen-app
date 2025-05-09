@@ -12,6 +12,7 @@ import CalendarScreen from "./screens/CalendarScreen";
 import SearchScreen from "./screens/SearchScreen";
 import AboutScreen from "./screens/AboutScreen";
 import MoreScreen from "./screens/MoreScreen";
+import JazzScreen from "./screens/JazzScreen";
 import LectureScreen from "./screens/LectureScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -30,6 +31,11 @@ function MoreStack() {
         name="Lecture"
         component={LectureScreen}
         options={{ title: "Offentlige Foredrag" }}
+      />
+      <Stack.Screen
+        name="Jazz"
+        component={JazzScreen}
+        options={{ title: "Hornbæk Jazzklub" }}
       />
     </Stack.Navigator>
   );
