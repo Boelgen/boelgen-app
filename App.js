@@ -1,19 +1,18 @@
-// App.js
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import { Image } from "react-native";
 
 // Import the screens
 import HomeScreen from "./screens/HomeScreen";
 import CalendarScreen from "./screens/CalendarScreen";
 import SearchScreen from "./screens/SearchScreen";
 import AboutScreen from "./screens/AboutScreen";
-import MoreScreen from "./screens/MoreScreen";
 
-// Create a bottom tab navigator
+// Import MoreStack
+import MoreStack from "./stack/MoreStack";
+
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -41,19 +40,19 @@ export default function App() {
           tabBarActiveTintColor: "#1e73be",
           tabBarInactiveTintColor: "black",
           headerStyle: {
-            backgroundColor: "#1e73be", // Change this to your desired header background color
+            backgroundColor: "#1e73be",
           },
           tabBarStyle: {
-            backgroundColor: "#FFFF", // Change this to your desired bottom tab background color
+            backgroundColor: "#FFFF",
           },
-          headerTintColor: "#fff", // Change this to your desired header text/icon color
+          headerTintColor: "#fff",
         })}
       >
         <Tab.Screen name="Hjem" component={HomeScreen} />
         <Tab.Screen name="Kalender" component={CalendarScreen} />
         <Tab.Screen name="Søg" component={SearchScreen} />
         <Tab.Screen name="Om os" component={AboutScreen} />
-        <Tab.Screen name="Mere" component={MoreScreen} />
+        <Tab.Screen name="Mere" component={MoreStack} options={{ headerShown: false }} />
       </Tab.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
