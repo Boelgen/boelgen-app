@@ -3,7 +3,7 @@ import { StyleSheet, View, Button } from "react-native";
 import { Button } from "react-native";
 import { ActivitiesScreen } from "./ActivitiesScreen";
 
-export default function MoreScreen({ navigation }{ navigation }) {
+export default function MoreScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Button
@@ -16,7 +16,6 @@ export default function MoreScreen({ navigation }{ navigation }) {
         onPress={() => navigation.navigate("Activities")}
         color="#1e73be"
       />
-
     </View>
   );
 }
