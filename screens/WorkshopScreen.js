@@ -6,12 +6,12 @@ export default function WorkshopScreen({ navigation }) {
     <ScrollView contentContainerStyle={styles.container}>
       <Button
         title="Multimedie"
-        onPress={() => navigation.navigate("Multimedie")}
+        onPress={() => navigation.navigate("MediaStudio")}
         color="#1e73be"
       />
       <Button
         title="Lydstudie"
-        onPress={() => navigation.navigate("Lydstudie")}
+        onPress={() => navigation.navigate("RecordingStudio")}
         color="#1e73be"
       />
     </ScrollView>

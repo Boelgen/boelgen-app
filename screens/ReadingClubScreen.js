@@ -14,7 +14,7 @@ export default function ReadingClubScreen() {
       <View style={styles.headerContainer}>
         <Text style={styles.heading}>BØLGENS LÆSEKREDSE</Text>
         <Image
-          source={require("../assets/gitte.jpg")}
+          source={require("../assets/boelgen_gitte.jpg")}
           style={styles.headerImage}
           resizeMode="contain"
         />

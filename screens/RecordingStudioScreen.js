@@ -15,7 +15,7 @@ export default function RecordingStudioScreen() {
       <View style={styles.headerContainer}>
         <Text style={styles.heading}>LYDSTUDIE OG TALENTUDVIKLING</Text>
         <Image
-          source={require("../assets/casper.jpg")}
+          source={require("../assets/boelgen_kasper.jpg")}
           style={styles.headerImage}
           resizeMode="contain"
         />

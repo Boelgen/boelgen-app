@@ -21,7 +21,7 @@ export default function ActivitiesScreen({ navigation }) {
       />
       <Button
         title="Læseklub"
-        onPress={() => navigation.navigate("Reading")}
+        onPress={() => navigation.navigate("ReadingClub")}
         color="#1e73be"
       />
       <Button

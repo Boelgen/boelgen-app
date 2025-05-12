@@ -23,7 +23,7 @@ export default function FilmClubScreen() {
       <View style={styles.headerContainer}>
         <Text style={styles.heading}>BØLGENS FILMKLUB</Text>
         <Image
-          source={require("../assets/palle.jpg")}
+          source={require("../assets/boelgen_palle.jpg")}
           style={styles.headerImage}
           resizeMode="contain"
         />

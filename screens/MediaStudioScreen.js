@@ -14,7 +14,7 @@ export default function MediaStudioScreen() {
       <View style={styles.headerContainer}>
         <Text style={styles.heading}>MULTIMEDIEVÆRKSTED</Text>
         <Image
-          source={require("../assets/palle.jpg")}
+          source={require("../assets/boelgen_palle.jpg")}
           style={styles.headerImage}
           resizeMode="contain"
         />

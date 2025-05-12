@@ -19,6 +19,14 @@ import LectureScreen from "./screens/LectureScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import NewsLetterScreen from "./screens/NewsLetterScreen";
 import ActivitiesScreen from "./screens/ActivitiesScreen";
+import FilmClubScreen from "./screens/FilmClubScreen";
+import IdeaScreen from "./screens/IdeaScreen";
+import KnittingScreen from "./screens/KnittingScreen";
+import MediaStudioScreen from "./screens/MediaStudioScreen";
+import MeetingRoomScreen from "./screens/MeetingRoomScreen";
+import RecordingStudioScreen from "./screens/RecordingStudioScreen";
+import ReadingClubScreen from "./screens/ReadingClubScreen";
+import VolunteerScreen from "./screens/VolunteerScreen";
 // Create a bottom tab navigator
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -60,6 +68,46 @@ function MoreStack() {
         name="Jazz"
         component={JazzScreen}
         options={{ title: "Hornbæk Jazzklub" }}
+      />
+      <Stack.Screen
+        name="FilmClub"
+        component={FilmClubScreen}
+        options={{ title: "Filmklub" }}
+      />
+      <Stack.Screen
+        name="Idea"
+        component={IdeaScreen}
+        options={{ title: "Idéer" }}
+      />
+      <Stack.Screen
+        name="Knitting"
+        component={KnittingScreen}
+        options={{ title: "Strikning" }}
+      />
+      <Stack.Screen
+        name="MediaStudio"
+        component={MediaStudioScreen}
+        options={{ title: "Multimedie" }}
+      />
+      <Stack.Screen
+        name="Meeting"
+        component={MeetingRoomScreen}
+        options={{ title: "Møder" }}
+      />
+      <Stack.Screen
+        name="RecordingStudio"
+        component={RecordingStudioScreen}
+        options={{ title: "Lydstudie" }}
+      />
+      <Stack.Screen
+        name="ReadingClub"
+        component={ReadingClubScreen}
+        options={{ title: "Læseklub" }}
+      />
+      <Stack.Screen
+        name="Volunteer"
+        component={VolunteerScreen}
+        options={{ title: "Frivillig" }}
       />
     </Stack.Navigator>
   );
