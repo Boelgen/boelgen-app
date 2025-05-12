@@ -1,0 +1,49 @@
+import React from "react";
+import { StyleSheet, View, Button, ScrollView } from "react-native";
+
+export default function ActivitiesScreen({ navigation }) {
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <Button
+        title="Om os (AboutScreen)"
+        onPress={() => navigation.navigate("About")}
+        color="#1e73be"
+      />
+      <Button
+        title="Filmklub (FilmClubScreen)"
+        onPress={() => navigation.navigate("FilmClub")}
+        color="#1e73be"
+      />
+      <Button
+        title="Strikning (KnittingScreen)"
+        onPress={() => navigation.navigate("Knitting")}
+        color="#1e73be"
+      />
+      <Button
+        title="Læseklub (ReadingScreen)"
+        onPress={() => navigation.navigate("Reading")}
+        color="#1e73be"
+      />
+      <Button
+        title="Møder (MeetingScreen)"
+        onPress={() => navigation.navigate("Meeting")}
+        color="#1e73be"
+      />
+      <Button
+        title="Idéer (IdeaScreen)"
+        onPress={() => navigation.navigate("Idea")}
+        color="#1e73be"
+      />
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 16,
+    backgroundColor: "#fff",
+  },
+});

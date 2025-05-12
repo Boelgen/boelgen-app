@@ -11,11 +11,58 @@ import HomeScreen from "./screens/HomeScreen";
 import CalendarScreen from "./screens/CalendarScreen";
 import SearchScreen from "./screens/SearchScreen";
 import AboutScreen from "./screens/AboutScreen";
+import WorkshopScreen from "./screens/WorkshopScreen";
 import MoreScreen from "./screens/MoreScreen";
-
+import InformationScreen from "./screens/InformationScreen";
+import JazzScreen from "./screens/JazzScreen";
+import LectureScreen from "./screens/LectureScreen";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import NewsLetterScreen from "./screens/NewsLetterScreen";
 // Create a bottom tab navigator
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
+function MoreStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Mere"
+        component={MoreScreen}
+        options={{ title: "Mere" }}
+      />
+      <Stack.Screen
+        name="Activities"
+        component={ActivitiesScreen}
+        options={{ title: "Aktiviteter" }}
+      />
+      <Stack.Screen
+        name="Workshop"
+        component={WorkshopScreen}
+        options={{ title: "Workshops" }}
+      />
+      <Stack.Screen
+        name="About"
+        component={AboutScreen}
+        options={{ title: "Om os" }}
+      />
+      <Stack.Screen
+        name="Nyhedsbrev"
+        component={NewsLetterScreen}
+        options={{ title: "Nyhedsbrev" }}
+      />
+      <Stack.Screen
+        name="Lecture"
+        component={LectureScreen}
+        options={{ title: "Offentlige Foredrag" }}
+      />
+      <Stack.Screen
+        name="Jazz"
+        component={JazzScreen}
+        options={{ title: "Hornbæk Jazzklub" }}
+      />
+    </Stack.Navigator>
+  );
+}
 export default function App() {
   return (
     <NavigationContainer>
@@ -30,7 +77,7 @@ export default function App() {
               iconName = "calendar";
             } else if (route.name === "Søg") {
               iconName = "search";
-            } else if (route.name === "Om os") {
+            } else if (route.name === "Info") {
               iconName = "information-circle";
             } else if (route.name === "Mere") {
               iconName = "menu";
@@ -52,7 +99,7 @@ export default function App() {
         <Tab.Screen name="Hjem" component={HomeScreen} />
         <Tab.Screen name="Kalender" component={CalendarScreen} />
         <Tab.Screen name="Søg" component={SearchScreen} />
-        <Tab.Screen name="Om os" component={AboutScreen} />
+        <Tab.Screen name="Info" component={InformationScreen} />
         <Tab.Screen name="Mere" component={MoreScreen} />
       </Tab.Navigator>
       <StatusBar style="auto" />

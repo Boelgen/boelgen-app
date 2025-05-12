@@ -1,10 +1,36 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View, Button } from "react-native";
+import { Button, Button } from "react-native";
+import { ActivitiesScreen } from "./ActivitiesScreen";
 
-export default function MoreScreen() {
+export default function MoreScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text>Mere/indstillinger</Text>
+      <Button
+        title="Gå til Workshops"
+        onPress={() => navigation.navigate("Workshop")}
+        color="#1e73be"
+      />
+      <Button
+        title="Gå til Aktiviteter"
+        onPress={() => navigation.navigate("Activities")}
+        color="#1e73be"
+      />
+      <Button
+        title="Gå til Nyhedsbrev"
+        onPress={() => navigation.navigate("Nyhedsbrev")}
+        color="#1e73be"
+      />
+      <Button
+        title="Offentlige Foredrag"
+        onPress={() => navigation.navigate("Lecture")}
+        color="#1e73be"
+      />
+      <Button
+        title="Hornbæk Jazzklub"
+        onPress={() => navigation.navigate("Jazz")}
+        color="#1e73be"
+      />
     </View>
   );
 }
