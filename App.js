@@ -18,6 +18,7 @@ import JazzScreen from "./screens/JazzScreen";
 import LectureScreen from "./screens/LectureScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import NewsLetterScreen from "./screens/NewsLetterScreen";
+import ActivitiesScreen from "./screens/ActivitiesScreen";
 // Create a bottom tab navigator
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -100,7 +101,7 @@ export default function App() {
         <Tab.Screen name="Kalender" component={CalendarScreen} />
         <Tab.Screen name="Søg" component={SearchScreen} />
         <Tab.Screen name="Info" component={InformationScreen} />
-        <Tab.Screen name="Mere" component={MoreScreen} />
+        <Tab.Screen name="Mere" component={MoreStack} />
       </Tab.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>

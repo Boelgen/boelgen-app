@@ -5,32 +5,32 @@ export default function ActivitiesScreen({ navigation }) {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Button
-        title="Om os (AboutScreen)"
+        title="Om os"
         onPress={() => navigation.navigate("About")}
         color="#1e73be"
       />
       <Button
-        title="Filmklub (FilmClubScreen)"
+        title="Filmklub"
         onPress={() => navigation.navigate("FilmClub")}
         color="#1e73be"
       />
       <Button
-        title="Strikning (KnittingScreen)"
+        title="Strikning"
         onPress={() => navigation.navigate("Knitting")}
         color="#1e73be"
       />
       <Button
-        title="Læseklub (ReadingScreen)"
+        title="Læseklub"
         onPress={() => navigation.navigate("Reading")}
         color="#1e73be"
       />
       <Button
-        title="Møder (MeetingScreen)"
+        title="Møder"
         onPress={() => navigation.navigate("Meeting")}
         color="#1e73be"
       />
       <Button
-        title="Idéer (IdeaScreen)"
+        title="Idéer"
         onPress={() => navigation.navigate("Idea")}
         color="#1e73be"
       />
