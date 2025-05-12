@@ -13,11 +13,11 @@ import SearchScreen from "./screens/SearchScreen";
 import AboutScreen from "./screens/AboutScreen";
 import WorkshopScreen from "./screens/WorkshopScreen";
 import MoreScreen from "./screens/MoreScreen";
+import InformationScreen from "./screens/InformationScreen";
 import JazzScreen from "./screens/JazzScreen";
 import LectureScreen from "./screens/LectureScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import NewsLetterScreen from "./screens/NewsLetterScreen";
-
 // Create a bottom tab navigator
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -77,7 +77,7 @@ export default function App() {
               iconName = "calendar";
             } else if (route.name === "Søg") {
               iconName = "search";
-            } else if (route.name === "Om os") {
+            } else if (route.name === "Info") {
               iconName = "information-circle";
             } else if (route.name === "Mere") {
               iconName = "menu";
@@ -99,8 +99,8 @@ export default function App() {
         <Tab.Screen name="Hjem" component={HomeScreen} />
         <Tab.Screen name="Kalender" component={CalendarScreen} />
         <Tab.Screen name="Søg" component={SearchScreen} />
-        <Tab.Screen name="Om os" component={AboutScreen} />
-        <Tab.Screen name="Mere" component={MoreStack} />
+        <Tab.Screen name="Info" component={InformationScreen} />
+        <Tab.Screen name="Mere" component={MoreScreen} />
       </Tab.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
