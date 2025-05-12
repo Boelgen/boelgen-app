@@ -22,8 +22,6 @@
     "expo-status-bar": "~2.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
     "react-native": "0.79.2",
     "react-native-calendar-picker": "^8.0.5",
     "react-native-navigation": "^7.47.0",
