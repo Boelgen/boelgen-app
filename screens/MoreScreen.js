@@ -21,6 +21,16 @@ export default function MoreScreen({ navigation }) {
         onPress={() => navigation.navigate("Nyhedsbrev")}
         color="#1e73be"
       />
+      <Button
+        title="Offentlige Foredrag"
+        onPress={() => navigation.navigate("Lecture")}
+        color="#1e73be"
+      />
+      <Button
+        title="Hornbæk Jazzklub"
+        onPress={() => navigation.navigate("Jazz")}
+        color="#1e73be"
+      />
     </View>
   );
 }
