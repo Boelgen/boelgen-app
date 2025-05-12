@@ -46,18 +46,29 @@ export default function HomeScreen() {
         data={events}
         keyExtractor={(item) => item.event_id.toString()} // Use `event_id` as the unique key
         renderItem={({ item }) => (
-          <View style={styles.eventItem}>
+          <View style={styles.eventCard}>
+            <View style={styles.dateBadge}>
+              <Text style={styles.dateDay}>
+                {new Date(item.date).getDate()}
+              </Text>
+              <Text style={styles.dateMonth}>
+                {new Date(item.date)
+                  .toLocaleString("da-DK", { month: "short" })
+                  .toUpperCase()}
+              </Text>
+            </View>
             <Image source={{ uri: item.image }} style={styles.eventImage} />
-            <Text style={styles.eventTitle}>{item.title}</Text>
-            <Text>{item.date}</Text>
-            <Text>{item.description}</Text>
-            <Text style={styles.eventPrice}>Price: {item.price} DKK</Text>
-            <Text
-              style={styles.eventLink}
-              onPress={() => Linking.openURL(item.ticket_link)}
-            >
-              Buy Tickets
-            </Text>
+            <View style={styles.eventContent}>
+              <Text style={styles.eventTitle}>{item.title}</Text>
+              <Text style={styles.eventDescription}>{item.description}</Text>
+              <Text style={styles.eventPrice}>Pris: {item.price} DKK</Text>
+              <Text
+                style={styles.readMoreButton}
+                onPress={() => Linking.openURL(item.ticket_link)}
+              >
+                LÆS MERE
+              </Text>
+            </View>
           </View>
         )}
       />
@@ -69,35 +80,89 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
   eventItem: {
     marginBottom: 20,
     padding: 10,
     borderWidth: 1,
     borderColor: "#ccc",
-    borderRadius: 5,
   },
   eventImage: {
     width: "100%",
-    height: 150,
-    borderRadius: 5,
-    marginBottom: 10,
+    height: 180,
   },
   eventTitle: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 5,
+    marginBottom: 8,
   },
   eventPrice: {
     fontSize: 16,
     color: "green",
-    marginTop: 5,
+    marginBottom: 8,
   },
   eventLink: {
     color: "blue",
     textDecorationLine: "underline",
     marginTop: 5,
+  },
+  readMoreButton: {
+    backgroundColor: "#e53935",
+    color: "#fff",
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    textAlign: "center",
+    fontWeight: "bold",
+    overflow: "hidden",
+    alignSelf: "flex-start",
+  },
+  eventContent: {
+    backgroundColor: "#f2f2f2",
+    width: "90%", // slightly smaller than image
+    alignSelf: "center",
+    marginTop: -32, // overlap the image
+    padding: 16,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    elevation: 3,
+    zIndex: 2,
+  },
+  dateMonth: {
+    color: "#fff",
+    fontSize: 12,
+    lineHeight: 14,
+    textTransform: "uppercase",
+  },
+  dateDay: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 30,
+    lineHeight: 32,
+  },
+  dateBadge: {
+    position: "absolute",
+    left: 16,
+    backgroundColor: "rgba(198, 37, 115, 0.9)",
+    paddingVertical: 18, // Reduced to fit text better
+    paddingHorizontal: 14, // Increased for width
+    minWidth: 54, // Ensures enough width
+    minHeight: 54, // Ensures enough height
+    zIndex: 2,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  eventCard: {
+    backgroundColor: "transparent",
+    marginVertical: 16,
+    width: "92%",
+    alignSelf: "center",
+    padding: 0,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    elevation: 3,
+    flexDirection: "column",
+    alignItems: "stretch",
   },
 });
