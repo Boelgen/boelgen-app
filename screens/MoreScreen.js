@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Button } from "react-native";
-import { Button } from "react-native";
+import { Button, Button } from "react-native";
 import { ActivitiesScreen } from "./ActivitiesScreen";
 
 export default function MoreScreen({ navigation }) {
@@ -14,6 +14,11 @@ export default function MoreScreen({ navigation }) {
       <Button
         title="Gå til Aktiviteter"
         onPress={() => navigation.navigate("Activities")}
+        color="#1e73be"
+      />
+      <Button
+        title="Gå til Nyhedsbrev"
+        onPress={() => navigation.navigate("Nyhedsbrev")}
         color="#1e73be"
       />
     </View>

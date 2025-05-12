@@ -13,7 +13,7 @@ import SearchScreen from "./screens/SearchScreen";
 import AboutScreen from "./screens/AboutScreen";
 import WorkshopScreen from "./screens/WorkshopScreen";
 import MoreScreen from "./screens/MoreScreen";
-import ActivitiesScreen from "./screens/ActivitiesScreen";
+import NewsLetterScreen from "./screens/NewsLetterScreen";
 
 // Create a bottom tab navigator
 const Tab = createBottomTabNavigator();
@@ -42,10 +42,14 @@ function MoreStack() {
         component={AboutScreen}
         options={{ title: "Om os" }}
       />
+      <Stack.Screen
+        name="Nyhedsbrev"
+        component={NewsLetterScreen}
+        options={{ title: "Nyhedsbrev" }}
+      />
     </Stack.Navigator>
   );
 }
-
 export default function App() {
   return (
     <NavigationContainer>
