@@ -11,9 +11,9 @@ import HomeScreen from "./screens/HomeScreen";
 import CalendarScreen from "./screens/CalendarScreen";
 import SearchScreen from "./screens/SearchScreen";
 import AboutScreen from "./screens/AboutScreen";
+import WorkshopScreen from "./screens/WorkshopScreen";
 import MoreScreen from "./screens/MoreScreen";
 import ActivitiesScreen from "./screens/ActivitiesScreen";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // Create a bottom tab navigator
 const Tab = createBottomTabNavigator();
@@ -31,6 +31,11 @@ function MoreStack() {
         name="Activities"
         component={ActivitiesScreen}
         options={{ title: "Aktiviteter" }}
+      />
+      <Stack.Screen
+        name="Workshop"
+        component={WorkshopScreen}
+        options={{ title: "Workshops" }}
       />
       <Stack.Screen
         name="About"
