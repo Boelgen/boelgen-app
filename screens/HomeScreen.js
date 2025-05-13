@@ -21,7 +21,7 @@ export default function HomeScreen() {
           `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/events`
         );
         const data = await response.json();
-        data.sort((a,b) => new Date(a.date) - new Date(b.date));
+        data.sort((a, b) => new Date(a.date) - new Date(b.date));
         setEvents(data);
       } catch (error) {
         console.error("Error fetching events:", error);
@@ -36,16 +36,18 @@ export default function HomeScreen() {
   const groupEventsByMonth = (events) => {
     const groupedEvents = {};
     events.forEach((event) => {
-      const month = new Date(event.date).toLocaleString("da-DK", {
-        month: "long",
-      }).toUpperCase();
+      const month = new Date(event.date)
+        .toLocaleString("da-DK", {
+          month: "long",
+        })
+        .toUpperCase();
       if (!groupedEvents[month]) {
         groupedEvents[month] = [];
       }
       groupedEvents[month].push(event);
     });
     return groupedEvents;
-  }
+  };
 
   if (loading) {
     return (
@@ -79,7 +81,10 @@ export default function HomeScreen() {
                       .toUpperCase()}
                   </Text>
                 </View>
-                <Image source={{ uri: event.image }} style={styles.eventImage} />
+                <Image
+                  source={{ uri: event.image }}
+                  style={styles.eventImage}
+                />
                 <View style={styles.eventContent}>
                   <Text style={styles.eventTitle}>{event.title}</Text>
                   <Text style={styles.eventDescription}>
@@ -200,12 +205,13 @@ const styles = StyleSheet.create({
   redLine: {
     flex: 1,
     height: 1,
-    backgroundColor: "red",
+    marginHorizontal: 16,
+    backgroundColor: "rgba(198, 37, 115, 0.9)",
   },
   monthText: {
     marginHorizontal: 10,
     fontSize: 36,
     fontWeight: "bold",
-    color: "blue",
+    color: "#1E72BE",
   },
 });
