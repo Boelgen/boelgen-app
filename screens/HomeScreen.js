@@ -33,6 +33,20 @@ export default function HomeScreen() {
     fetchEvents();
   }, []);
 
+  const groupEventsByMonth = (events) => {
+    const groupedEvents = {};
+    events.forEach((event) => {
+      const month = new Date(event.date).toLocaleString("da-DK", {
+        month: "long",
+      }).toUpperCase();
+      if (!groupedEvents[month]) {
+        groupedEvents[month] = [];
+      }
+      groupedEvents[month].push(event);
+    });
+    return groupedEvents;
+  }
+
   if (loading) {
     return (
       <View style={styles.container}>
@@ -44,32 +58,43 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <FlatList
-        data={events}
-        keyExtractor={(item) => item.event_id.toString()} // Use `event_id` as the unique key
+        data={Object.entries(groupEventsByMonth(events))}
+        keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
-          <View style={styles.eventCard}>
-            <View style={styles.dateBadge}>
-              <Text style={styles.dateDay}>
-                {new Date(item.date).getDate()}
-              </Text>
-              <Text style={styles.dateMonth}>
-                {new Date(item.date)
-                  .toLocaleString("da-DK", { month: "short" })
-                  .toUpperCase()}
-              </Text>
+          <View>
+            <View style={styles.monthHeader}>
+              <View style={styles.redLine} />
+              <Text style={styles.monthText}>{item[0]}</Text>
+              <View style={styles.redLine} />
             </View>
-            <Image source={{ uri: item.image }} style={styles.eventImage} />
-            <View style={styles.eventContent}>
-              <Text style={styles.eventTitle}>{item.title}</Text>
-              <Text style={styles.eventDescription}>{item.description}</Text>
-              <Text style={styles.eventPrice}>Pris: {item.price} DKK</Text>
-              <Text
-                style={styles.readMoreButton}
-                onPress={() => Linking.openURL(item.ticket_link)}
-              >
-                LÆS MERE
-              </Text>
-            </View>
+            {item[1].map((event) => (
+              <View style={styles.eventCard} key={event.event_id.toString()}>
+                <View style={styles.dateBadge}>
+                  <Text style={styles.dateDay}>
+                    {new Date(event.date).getDate()}
+                  </Text>
+                  <Text style={styles.dateMonth}>
+                    {new Date(event.date)
+                      .toLocaleString("da-DK", { month: "short" })
+                      .toUpperCase()}
+                  </Text>
+                </View>
+                <Image source={{ uri: event.image }} style={styles.eventImage} />
+                <View style={styles.eventContent}>
+                  <Text style={styles.eventTitle}>{event.title}</Text>
+                  <Text style={styles.eventDescription}>
+                    {event.description}
+                  </Text>
+                  <Text style={styles.eventPrice}>Pris: {event.price} DKK</Text>
+                  <Text
+                    style={styles.readMoreButton}
+                    onPress={() => Linking.openURL(event.ticket_link)}
+                  >
+                    LÆS MERE
+                  </Text>
+                </View>
+              </View>
+            ))}
           </View>
         )}
       />
@@ -165,5 +190,22 @@ const styles = StyleSheet.create({
     elevation: 3,
     flexDirection: "column",
     alignItems: "stretch",
+  },
+  monthHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 10,
+  },
+  redLine: {
+    flex: 1,
+    height: 1,
+    backgroundColor: "red",
+  },
+  monthText: {
+    marginHorizontal: 10,
+    fontSize: 36,
+    fontWeight: "bold",
+    color: "blue",
   },
 });
