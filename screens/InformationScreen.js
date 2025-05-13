@@ -1,4 +1,3 @@
-  import React from "react";
   import { StyleSheet, Text, View, Image, ScrollView, Button } from "react-native";
 
   export default function InformationScreenen({ navigation }) {

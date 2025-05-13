@@ -1,4 +1,3 @@
-import React from "react";
 import { StyleSheet, View, Button, ScrollView } from "react-native";
 
 export default function ActivitiesScreen({ navigation }) {

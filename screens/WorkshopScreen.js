@@ -1,5 +1,4 @@
-import React from "react";
-import { StyleSheet, View, Button, ScrollView } from "react-native";
+import { StyleSheet, Button, ScrollView } from "react-native";
 
 export default function WorkshopScreen({ navigation }) {
   return (
