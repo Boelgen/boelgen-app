@@ -21,6 +21,7 @@ export default function HomeScreen() {
           `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/events`
         );
         const data = await response.json();
+        data.sort((a,b) => new Date(a.date) - new Date(b.date));
         setEvents(data);
       } catch (error) {
         console.error("Error fetching events:", error);
