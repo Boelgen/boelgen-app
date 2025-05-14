@@ -34,18 +34,18 @@ export default function FilmClubScreen() {
         <Text style={[styles.paragraph, { fontWeight: "bold" }]}>
           Der vises film:
         </Text>
-        <Text style={[styles.date, { fontWeight: "bold" }]}>20. januar</Text>
-        <Text style={[styles.date, { fontWeight: "bold" }]}>17. februar</Text>
-        <Text style={[styles.date, { fontWeight: "bold" }]}>24. februar</Text>
-        <Text style={[styles.date, { fontWeight: "bold" }]}>3. marts</Text>
-        <Text style={[styles.date, { fontWeight: "bold" }]}>28. april</Text>
-        <Text style={[styles.date, { fontWeight: "bold" }]}>5. maj</Text>
-        <Text style={[styles.date, { fontWeight: "bold" }]}>19. maj</Text>
-        <Text style={[styles.date, { fontWeight: "bold" }]}>12. maj</Text>
+        <Text style={[styles.date]}>20. januar</Text>
+        <Text style={[styles.date]}>17. februar</Text>
+        <Text style={[styles.date]}>24. februar</Text>
+        <Text style={[styles.date]}>3. marts</Text>
+        <Text style={[styles.date]}>28. april</Text>
+        <Text style={[styles.date]}>5. maj</Text>
+        <Text style={[styles.date]}>19. maj</Text>
+        <Text style={[styles.date]}>12. maj</Text>
 
         <Text style={styles.paragraph}>
           Det koster kun kr. 100 om året for medlemskab af klubben – ønsker du kun at se enkelte film eller har gæster med, så koster det kr. 40 i midlertidigt medlemskab. Filmene starter altid kl. 19, og før alle film serveres 2 lækre retter, der kun koster kr. 125,-{" "}
-          <Text style={[styles.highlight, { color: "#ff3b3b" }]}>
+          <Text style={[styles.bold, { color: "#ff3b3b" }]}>
             MAN SKAL MELDE SIG TIL SPISNING.
           </Text>
         </Text>
@@ -113,8 +113,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginLeft: 10,
     marginBottom: 5,
+    fontWeight: "bold"
   },
-  highlight: {
+  bold: {
     fontWeight: "bold",
   },
   link: {
