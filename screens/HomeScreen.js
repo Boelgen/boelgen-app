@@ -90,7 +90,7 @@ export default function HomeScreen() {
                   <Text style={styles.eventDescription}>
                     {event.description}
                   </Text>
-                  <Text style={styles.eventPrice}>Pris: {event.price} DKK</Text>
+                  <Text style={styles.eventPrice}>Pris: {event.price}</Text>
                   <Text
                     style={styles.readMoreButton}
                     onPress={() => Linking.openURL(event.ticket_link)}

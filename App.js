@@ -1,10 +1,7 @@
-// App.js
 import { StatusBar } from "expo-status-bar";
-import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import { Image } from "react-native";
 
 // Import the screens
 import HomeScreen from "./screens/HomeScreen";
@@ -27,6 +24,7 @@ import MeetingRoomScreen from "./screens/MeetingRoomScreen";
 import RecordingStudioScreen from "./screens/RecordingStudioScreen";
 import ReadingClubScreen from "./screens/ReadingClubScreen";
 import VolunteerScreen from "./screens/VolunteerScreen";
+
 // Create a bottom tab navigator
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
