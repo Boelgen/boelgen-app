@@ -16,7 +16,7 @@ export default function JazzScreen() {
     const fetchJazzEvents = async () => {
       try {
         const response = await fetch(
-          `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/events/filter?description=jazz`
+          `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/events/filter?description=Jazzklub`
         );
         const data = await response.json();
         setEvents(data);
