@@ -49,6 +49,17 @@ export default function HomeScreen() {
     return groupedEvents;
   };
 
+  const filterEventsFromToday = (events) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Today set to midnight for comparison
+
+    return events.filter(event => {
+      const eventDate = new Date(event.date);
+      eventDate.setHours(0, 0, 0, 0); // Event set to midnight to compare
+      return eventDate >= today;
+    });
+  };
+
   if (loading) {
     return (
       <View style={styles.container}>
@@ -57,10 +68,12 @@ export default function HomeScreen() {
     );
   }
 
+  const filteredEvents = filterEventsFromToday(events);
+
   return (
     <View style={styles.container}>
       <FlatList
-        data={Object.entries(groupEventsByMonth(events))}
+        data={Object.entries(groupEventsByMonth(filteredEvents))}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
           <View>
