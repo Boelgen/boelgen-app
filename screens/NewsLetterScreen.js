@@ -1,4 +1,3 @@
-import React from "react";
 import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 
 export default function NewsLetterScreen() {

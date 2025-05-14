@@ -84,7 +84,7 @@ export default function CalendarScreen() {
         {selectedEvents.length > 0 ? (
           selectedEvents.map((event, index) => (
             <View key={index} style={styles.eventContainer}>
-              <Text style={styles.eventTitle}>{event.title}</Text>
+              <Text style={styles.bold}>{event.title}</Text>
               <Text>{event.description}</Text>
             </View>
           ))
@@ -102,7 +102,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-
   },
   header: {
     fontSize: 18,
@@ -119,7 +118,7 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
     borderRadius: 5,
   },
-  eventTitle: {
+  bold: {
     fontWeight: "bold",
   },
 });

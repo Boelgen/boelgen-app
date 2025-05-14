@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  ActivityIndicator,
-} from "react-native";
+import { StyleSheet, Text, View, FlatList, ActivityIndicator } from "react-native";
 
 export default function JazzScreen() {
   const [events, setEvents] = useState([]);

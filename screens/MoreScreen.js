@@ -1,13 +1,4 @@
-import React from "react";
 import { StyleSheet, View, Button } from "react-native";
-import { ActivitiesScreen } from "./ActivitiesScreen";
-import { WorkshopScreen } from "./WorkshopScreen";
-import { AboutScreen } from "./AboutScreen";
-import { NewsLetterScreen } from "./NewsLetterScreen";
-import { LectureScreen } from "./LectureScreen";
-import { JazzScreen } from "./JazzScreen";
-import { InformationScreen } from "./InformationScreen";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 export default function MoreScreen({ navigation }) {
   return (
