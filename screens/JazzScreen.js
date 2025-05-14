@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, FlatList, ActivityIndicator } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  ActivityIndicator,
+} from "react-native";
 
 export default function JazzScreen() {
   const [events, setEvents] = useState([]);
@@ -10,7 +16,7 @@ export default function JazzScreen() {
     const fetchJazzEvents = async () => {
       try {
         const response = await fetch(
-          `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/events/filter?description=Jazzklub`
+          `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/events/filter?q=Jazz`
         );
         const data = await response.json();
         setEvents(data);

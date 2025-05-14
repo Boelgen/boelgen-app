@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, FlatList, ActivityIndicator } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  ActivityIndicator,
+} from "react-native";
 
 export default function LectureScreen() {
   const [events, setEvents] = useState([]);
@@ -10,7 +16,7 @@ export default function LectureScreen() {
     const fetchLectureEvents = async () => {
       try {
         const response = await fetch(
-          `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/events/filter?description=offentlige foredrag`
+          `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/events/filter?q=offentlige foredrag`
         );
         const data = await response.json();
         setEvents(data);
