@@ -6,13 +6,13 @@ import {
   ActivityIndicator,
   FlatList,
   Image,
-  Linking,
+  TouchableOpacity,
 } from "react-native";
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  
   useEffect(() => {
     // Fetch events from the backend
     const fetchEvents = async () => {
@@ -29,7 +29,6 @@ export default function HomeScreen() {
         setLoading(false);
       }
     };
-
     fetchEvents();
   }, []);
 
@@ -52,7 +51,6 @@ export default function HomeScreen() {
   const filterEventsFromToday = (events) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0); // Today set to midnight for comparison
-
     return events.filter(event => {
       const eventDate = new Date(event.date);
       eventDate.setHours(0, 0, 0, 0); // Event set to midnight to compare
@@ -60,10 +58,15 @@ export default function HomeScreen() {
     });
   };
 
+  const handleEventPress = (event) => {
+    // Navigate to EventScreen in current tab stack
+    navigation.navigate('EventScreen', { event });
+  };
+
   if (loading) {
     return (
       <View style={styles.container}>
-        <ActivityIndicator size="large" color="#0000ff" />
+        <ActivityIndicator size="large" color="#1e73be" />
       </View>
     );
   }
@@ -74,7 +77,7 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <FlatList
         data={Object.entries(groupEventsByMonth(filteredEvents))}
-        keyExtractor={(item, index) => index.toString()}
+        keyExtractor={(_, index) => index.toString()}
         renderItem={({ item }) => (
           <View>
             <View style={styles.monthHeader}>
@@ -83,7 +86,12 @@ export default function HomeScreen() {
               <View style={styles.redLine} />
             </View>
             {item[1].map((event) => (
-              <View style={styles.eventCard} key={event.event_id.toString()}>
+              <TouchableOpacity 
+                key={event.event_id.toString()}
+                style={styles.eventCard}
+                onPress={() => handleEventPress(event)}
+                activeOpacity={0.7}
+              >
                 <View style={styles.dateBadge}>
                   <Text style={styles.dateDay}>
                     {new Date(event.date).getDate()}
@@ -99,19 +107,16 @@ export default function HomeScreen() {
                   style={styles.eventImage}
                 />
                 <View style={styles.eventContent}>
-                  <Text style={styles.eventTitle}>{event.title}</Text>
-                  <Text style={styles.eventDescription}>
+                  <Text style={styles.eventTitle} numberOfLines={2}>{event.title}</Text>
+                  <Text style={styles.eventDescription} numberOfLines={2}>
                     {event.description}
                   </Text>
                   <Text style={styles.eventPrice}>Pris: {event.price}</Text>
-                  <Text
-                    style={styles.readMoreButton}
-                    onPress={() => Linking.openURL(event.ticket_link)}
-                  >
-                    LÆS MERE
-                  </Text>
+                  <View style={styles.readMoreButton}>
+                    <Text style={styles.readMoreButtonText}>LÆS MERE</Text>
+                  </View>
                 </View>
-              </View>
+              </TouchableOpacity>
             ))}
           </View>
         )}
