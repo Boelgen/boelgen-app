@@ -1,3 +1,4 @@
+import React from 'react';
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -39,9 +40,10 @@ function HomeStackScreen() {
       }}
     >
       <HomeStack.Screen
-      name="Home"
-      component={HomeScreen}
-      options={{ title: "Hjem" }} />
+        name="Home"
+        component={HomeScreen}
+        options={{ title: "Hjem" }} 
+      />
       <HomeStack.Screen
         name="EventScreen"
         component={EventScreen}
@@ -59,9 +61,10 @@ function HomeStackScreen() {
 function MoreStackScreen() {
   return (
     <MoreStack.Navigator
-        screenOptions={{
+      screenOptions={{
         headerShown: false
-      }}>
+      }}
+    >
       <MoreStack.Screen name="Mere" component={MoreScreen} options={{ title: "Mere" }} />
       <MoreStack.Screen name="Activities" component={ActivitiesScreen} options={{ title: "Aktiviteter" }} />
       <MoreStack.Screen name="Workshop" component={WorkshopScreen} options={{ title: "Workshops" }} />
@@ -81,50 +84,89 @@ function MoreStackScreen() {
   );
 }
 
-function TabNavigator() {
+export default function App() {
+  const [previousRoute, setPreviousRoute] = React.useState(null);
+
   return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName = "";
-          if (route.name === "Hjem") {
-            iconName = "home";
-          } else if (route.name === "Kalender") {
-            iconName = "calendar";
-          } else if (route.name === "Søg") {
-            iconName = "search";
-          } else if (route.name === "Info") {
-            iconName = "information-circle";
-          } else if (route.name === "Mere") {
-            iconName = "menu";
-          }
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
+    <NavigationContainer
+      onStateChange={(state) => {
+        // Keeps track to detect tab changes
+        if (state) {
+          const currentRouteName = state.routes[state.index]?.name;
+          setPreviousRoute((prev) => {
+            if (prev !== currentRouteName) {
+              return currentRouteName;
+            }
+            return prev;
+          });
+        }
+      }}
+    >
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ color, size }) => {
+            let iconName = "";
+            if (route.name === "Hjem") {
+              iconName = "home";
+            } else if (route.name === "Kalender") {
+              iconName = "calendar";
+            } else if (route.name === "Søg") {
+              iconName = "search";
+            } else if (route.name === "Info") {
+              iconName = "information-circle";
+            } else if (route.name === "Mere") {
+              iconName = "menu";
+            }
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
           tabBarActiveTintColor: "#1e73be",
           tabBarInactiveTintColor: "black",
           headerStyle: {
-          backgroundColor: "#1e73be", // Change this to your desired header background color
+            backgroundColor: "#1e73be",
           },
           tabBarStyle: {
-          backgroundColor: "#FFFF", // Change this to your desired bottom tab background color
+            backgroundColor: "#FFFF",
           },
-          headerTintColor: "#fff", // Change this to your desired header text/icon color
+          headerTintColor: "#fff",
+          unmountOnBlur: true  // reset screen state when switching tabs
         })}
-    >
-      <Tab.Screen name="Hjem" component={HomeStackScreen} />
-      <Tab.Screen name="Kalender" component={CalendarScreen} />
-      <Tab.Screen name="Søg" component={SearchScreen} />
-      <Tab.Screen name="Info" component={InformationScreen} />
-      <Tab.Screen name="Mere" component={MoreStackScreen} />
-    </Tab.Navigator>
-  );
-}
-
-// Root App Component
-export default function App() {
-  return (
-    <NavigationContainer>
-      <TabNavigator />
+      >
+        <Tab.Screen 
+          name="Hjem" 
+          component={HomeStackScreen} 
+          options={{
+            title: "Hjem",
+            unmountOnBlur: true,
+          }}
+          listeners={({ navigation }) => ({
+            tabPress: e => {
+              e.preventDefault();
+              navigation.navigate("Hjem", {
+                screen: "Home"  // when pressing Home tab, it goes to the Home screen
+              });
+            },
+          })}
+        />
+        <Tab.Screen name="Kalender" component={CalendarScreen} />
+        <Tab.Screen name="Søg" component={SearchScreen} />
+        <Tab.Screen name="Info" component={InformationScreen} />
+        <Tab.Screen 
+          name="Mere" 
+          component={MoreStackScreen} 
+          options={{
+            title: "Mere",
+            unmountOnBlur: true,
+          }}
+          listeners={({ navigation }) => ({
+            tabPress: e => {
+              e.preventDefault();
+              navigation.navigate("Mere", {
+                screen: "Mere"
+              });
+            },
+          })}
+        />
+      </Tab.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
   );
