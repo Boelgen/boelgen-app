@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   StyleSheet,
@@ -16,6 +17,8 @@ const ACTIVITIES = [
   { title: "Møder", screen: "Meeting", icon: "people" },
   { title: "Idéer", screen: "Idea", icon: "bulb" },
 ];
+
+main
 
 export default function ActivitiesScreen({ navigation }) {
   return (
