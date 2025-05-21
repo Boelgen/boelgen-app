@@ -24,6 +24,7 @@ import MeetingRoomScreen from "./screens/MeetingRoomScreen";
 import RecordingStudioScreen from "./screens/RecordingStudioScreen";
 import ReadingClubScreen from "./screens/ReadingClubScreen";
 import VolunteerScreen from "./screens/VolunteerScreen";
+import ChatbotScreen from "./screens/ChatbotScreen";
 
 // Create a bottom tab navigator
 const Tab = createBottomTabNavigator();
@@ -107,6 +108,16 @@ function MoreStack() {
         component={VolunteerScreen}
         options={{ title: "Frivillig" }}
       />
+      <Stack.Screen
+        name="Chatbot"
+        component={ChatbotScreen}
+        options={{ title: "Chatbot" }}
+      />
+      <Stack.Screen
+        name="Information"
+        component={InformationScreen}
+        options={{ title: "Information" }}
+      />
     </Stack.Navigator>
   );
 }
@@ -114,7 +125,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        screenOptions={({ route }) => ({  
+        screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 
@@ -124,8 +135,8 @@ export default function App() {
               iconName = "calendar";
             } else if (route.name === "Søg") {
               iconName = "search";
-            } else if (route.name === "Info") {
-              iconName = "information-circle";
+            } else if (route.name === "Chat") {
+              iconName = "chatbubble";
             } else if (route.name === "Mere") {
               iconName = "menu";
             }
@@ -146,7 +157,7 @@ export default function App() {
         <Tab.Screen name="Hjem" component={HomeScreen} />
         <Tab.Screen name="Kalender" component={CalendarScreen} />
         <Tab.Screen name="Søg" component={SearchScreen} />
-        <Tab.Screen name="Info" component={InformationScreen} />
+        <Tab.Screen name="Chat" component={ChatbotScreen} />
         <Tab.Screen name="Mere" component={MoreStack} />
       </Tab.Navigator>
       <StatusBar style="auto" />
