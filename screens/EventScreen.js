@@ -34,6 +34,8 @@ export default function EventScreen({ route, navigation }) {
     return value !== null && value !== undefined && value !== '' && value !== 'NULL';
   };
 
+  const isCancelled = event._cancelled === true;  // is called _cancelled nnot is_cancelled
+
   return (
     <ScrollView style={styles.container}>
       <Image
@@ -53,32 +55,38 @@ export default function EventScreen({ route, navigation }) {
           </Text>
           {event.time && <Text style={styles.eventTime}>{event.time}</Text>}
         </View>
-        {(event.is_cancelled === 1 || event.is_cancelled === true) && (
+        
+        {isCancelled && (
           <View style={styles.cancelledBadge}>
             <Text style={styles.cancelledText}>AFLYST</Text>
           </View>
         )}
+
         <Text style={styles.eventTitle}>{event.title}</Text>
         <View style={styles.separator} />
         <Text style={styles.eventDescription}>{event.description}</Text>
+
         {event.location && (
           <View style={styles.locationContainer}>
             <Ionicons name="location" size={20} color="#1e73be" />
             <Text style={styles.locationText}>{event.location}</Text>
           </View>
         )}
+
         {event.price && (
           <View style={styles.priceContainer}>
             <Ionicons name="pricetag" size={20} color="#1e73be" />
             <Text style={styles.priceText}>Pris: {event.price}</Text>
           </View>
         )}
+
         {hasContent(event.additional_information) && (
           <View style={styles.additionalInfoContainer}>
             <Text style={styles.additionalInfoTitle}>Yderligere information</Text>
             <Text style={styles.additionalInfoText}>{event.additional_information}</Text>
           </View>
         )}
+
         {event.ticket_link && (
           <TouchableOpacity
             style={styles.ticketButton}
@@ -128,6 +136,7 @@ const styles = StyleSheet.create({
   cancelledText: {
     color: "white",
     fontWeight: "bold",
+    fontSize: 14,
   },
   eventTitle: {
     fontSize: 24,
