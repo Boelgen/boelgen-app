@@ -1,4 +1,3 @@
-// screens/EventScreen.js
 import React, { useState, useEffect } from "react";
 import { View, Text, Image, StyleSheet, Linking, ScrollView, TouchableOpacity, Dimensions, } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
@@ -26,13 +25,11 @@ export default function EventScreen({ route, navigation }) {
         setImageSize({ width: deviceWidth, height: finalHeight });
       }, (error) => {
         console.error("Error getting image size:", error);
-        // Fallback to a reasonable default
         setImageSize({ width: deviceWidth, height: deviceWidth * 0.6 });
       });
     }
   }, [event.image, deviceWidth]);
 
-  // Helper function to check if a value should be considered non-empty
   const hasContent = (value) => {
     return value !== null && value !== undefined && value !== '' && value !== 'NULL';
   };
@@ -56,7 +53,6 @@ export default function EventScreen({ route, navigation }) {
           </Text>
           {event.time && <Text style={styles.eventTime}>{event.time}</Text>}
         </View>
-        {/* Check if is_cancelled equals 1 */}
         {(event.is_cancelled === 1 || event.is_cancelled === true) && (
           <View style={styles.cancelledBadge}>
             <Text style={styles.cancelledText}>AFLYST</Text>
@@ -77,7 +73,6 @@ export default function EventScreen({ route, navigation }) {
             <Text style={styles.priceText}>Pris: {event.price}</Text>
           </View>
         )}
-        {/* Check if additional_information has content and is not NULL */}
         {hasContent(event.additional_information) && (
           <View style={styles.additionalInfoContainer}>
             <Text style={styles.additionalInfoTitle}>Yderligere information</Text>

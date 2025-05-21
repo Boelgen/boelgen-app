@@ -3,6 +3,11 @@
     "name": "boelgen-app",
     "slug": "boelgen-app",
     "version": "1.0.0",
-    "newArchEnabled": true
+    "newArchEnabled": true,
+    "extra": {
+      "eas": {
+        "projectId": "1f608c91-23c0-40df-9e79-949e742fe331"
+      }
+    }
   }
 }
