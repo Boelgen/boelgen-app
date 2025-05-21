@@ -226,6 +226,32 @@ Tilmelding til nyhedsbrev:
 
 Tilmeld via Bølgens hjemmeside eller i caféen.
 
+Flavortekst "Om os":
+Fællesskab er den bærende tanke bag alt hvad vi laver her på Bølgen.
+
+Når vi har arrangementer med mad foregår det ved langborde og som oftest med en buffet. Noget er baseret på fælles interesser som løb, læseklubber, fotografi – andre er oplevelses fællesskaber som Hornbæk Jazzklub og teaterforestillinger fra Helsingør Teater.
+
+Mange af arrangementerne producerer vi selv og en del er i samarbejde med foreninger eller lokale forretningsdrivende. Vi er meget glade for disse samarbejder og den synergi effekt, erfaring og udvikling de medfører.
+
+Bølgen indeholder meget mere end du lige ser her – til daglig en fritidsklub, skolebørn der kommer og spiser hver dag, løbeklub der mødes her, et multimedieværksted, et minibibliotek, et lydstudie – og skulle du gå rundt med en ide du har brug for hjælp til at realisere så kig ned – vi vil meget gerne hjælpe, især tiltag der kommer fællesskabet til gode.
+
+4 forskellige hovedpersoner:
+1. Udita: Han er Bølgens leder og har ansvaret for at arrangere og koordinere alle aktiviteter. Han er også den, der står for at lave mad til arrangementerne.
+Udita kontakt: 25313450
+Udita email: Ucb62@helsingor.dk
+
+2. Palle: Han er Bølgens tekniske ansvarlige og hjælper med at sætte lyd og lys op til arrangementerne. Han står for IT undervisning, diverse ture og arrangementer. Han er også den, der står for at lave mad til arrangementerne.
+Palle kontakt: 25313452
+Palle email: palknudsen@hotmail.com
+
+3. Gitte: Hun er Bølgens kreative sjæl og står for at arrangere kreative workshops og aktiviteter. Hun er også Bølgens bogholder.
+Gitte kontakt: 25313453
+Gitte email: Gsc62@helsingor.dk
+
+4. Casper: Han er ansvarlig for Bølgens lydstudie og talentudvikling. Han står også for Bølgens festival; Nordsjæl.
+Casper kontakt: 2679 2595
+Casper email: casper@uneed.dk
+
 Opdateringer og yderligere information findes på www.boelgen.dk.
 Dagens dato er ${today}.
 Her er de nyeste arrangementer:
