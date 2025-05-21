@@ -31,6 +31,7 @@ import ChatbotScreen from "./screens/ChatbotScreen";
 // Create navigators
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
+const CalendarStack = createNativeStackNavigator();
 const MoreStack = createNativeStackNavigator();
 
 function HomeStackScreen() {
@@ -56,6 +57,32 @@ function HomeStackScreen() {
         })}
       />
     </HomeStack.Navigator>
+  );
+}
+
+function CalendarStackScreen() {
+  return (
+    <CalendarStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <CalendarStack.Screen
+        name="Calendar"
+        component={CalendarScreen}
+        options={{ title: "Kalender" }}
+      />
+      <CalendarStack.Screen
+        name="EventScreen"
+        component={EventScreen}
+        options={({ route }) => ({
+          title:
+            route.params.event.title.length > 20
+              ? route.params.event.title.substring(0, 20) + "..."
+              : route.params.event.title,
+        })}
+      />
+    </CalendarStack.Navigator>
   );
 }
 
@@ -151,7 +178,22 @@ export default function App() {
             },
           })}
         />
-        <Tab.Screen name="Kalender" component={CalendarScreen} />
+        <Tab.Screen 
+          name="Kalender" 
+          component={CalendarStackScreen} 
+          options={{
+            title: "Kalender",
+            unmountOnBlur: true,
+          }}
+          listeners={({ navigation }) => ({
+            tabPress: e => {
+              e.preventDefault();
+              navigation.navigate("Kalender", {
+                screen: "Calendar"  // when pressing Home tab, it goes to the Home screen
+              });
+            },
+          })}
+        />
         <Tab.Screen name="Søg" component={SearchScreen} />
         <Tab.Screen name="Chat" component={ChatbotScreen} />
         <Tab.Screen 
