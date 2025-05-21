@@ -3,6 +3,7 @@
     "name": "boelgen-app",
     "slug": "boelgen-app",
     "version": "1.0.0",
+    "owner": "geargrind",
     "newArchEnabled": true,
     "android": {
       "package": "com.geargrind.boelgenapp"

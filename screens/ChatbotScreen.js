@@ -6,6 +6,8 @@ import {
   ScrollView,
   TextInput,
   TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 import axios from "axios";
 
@@ -289,20 +291,21 @@ Svar altid på dansk og vær hjælpsom.
     }
   }
 
-  // import { sendGeminiMessage } from "./MoreScreen"; // or from a utils file
-
   const sendMessage = async () => {
     if (!input.trim()) return;
     const newMessages = [...messages, { from: "user", text: input }];
     setMessages(newMessages);
-    // Replace with your actual sendGeminiMessage implementation
     const response = await sendGeminiMessage(input, messages);
     setMessages((prev) => [...prev, { from: "bot", text: response }]);
     setInput("");
   };
 
   return (
-    <View style={styles.background}>
+    <KeyboardAvoidingView
+      style={styles.background}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      keyboardVerticalOffset={80} // adjust if you have a header
+    >
       <View style={styles.card}>
         <ScrollView style={{ width: "100%" }}>
           {messages.map((msg, idx) => (
@@ -341,7 +344,7 @@ Svar altid på dansk og vær hjælpsom.
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
