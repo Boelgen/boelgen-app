@@ -3,10 +3,17 @@
     "name": "boelgen-app",
     "slug": "boelgen-app",
     "version": "1.0.0",
+    "owner": "geargrind",
     "newArchEnabled": true,
+    "android": {
+      "package": "com.geargrind.boelgenapp"
+    },
+    "ios": {
+      "bundleIdentifier": "com.geargrind.boelgenapp"
+    },
     "extra": {
       "eas": {
-        "projectId": "1f608c91-23c0-40df-9e79-949e742fe331"
+        "projectId": "334fc0d1-a528-4a9e-8296-a78b4fed7267"
       }
     }
   }

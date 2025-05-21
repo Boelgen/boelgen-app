@@ -26,6 +26,7 @@ import RecordingStudioScreen from "./screens/RecordingStudioScreen";
 import ReadingClubScreen from "./screens/ReadingClubScreen";
 import VolunteerScreen from "./screens/VolunteerScreen";
 import EventScreen from "./screens/EventScreen";
+import ChatbotScreen from "./screens/ChatbotScreen";
 
 // Create navigators
 const Tab = createBottomTabNavigator();
@@ -80,6 +81,8 @@ function MoreStackScreen() {
       <MoreStack.Screen name="RecordingStudio" component={RecordingStudioScreen} options={{ title: "Lydstudie" }} />
       <MoreStack.Screen name="ReadingClub" component={ReadingClubScreen} options={{ title: "Læseklub" }} />
       <MoreStack.Screen name="Volunteer" component={VolunteerScreen} options={{ title: "Frivillig" }} />
+      <MoreStack.Screen name="Chatbot" component={ChatbotScreen} options={{ title: "Chatbot" }} />
+      <MoreStack.Screen name="Information" component={InformationScreen} options={{ title: "Information" }} />
     </MoreStack.Navigator>
   );
 }
@@ -104,16 +107,17 @@ export default function App() {
     >
       <Tab.Navigator
         screenOptions={({ route }) => ({
-          tabBarIcon: ({ color, size }) => {
+          tabBarIcon: ({ focused, color, size }) => {
             let iconName = "";
+
             if (route.name === "Hjem") {
               iconName = "home";
             } else if (route.name === "Kalender") {
               iconName = "calendar";
             } else if (route.name === "Søg") {
               iconName = "search";
-            } else if (route.name === "Info") {
-              iconName = "information-circle";
+            } else if (route.name === "Chat") {
+              iconName = "chatbubble";
             } else if (route.name === "Mere") {
               iconName = "menu";
             }
@@ -149,7 +153,7 @@ export default function App() {
         />
         <Tab.Screen name="Kalender" component={CalendarScreen} />
         <Tab.Screen name="Søg" component={SearchScreen} />
-        <Tab.Screen name="Info" component={InformationScreen} />
+        <Tab.Screen name="Chat" component={ChatbotScreen} />
         <Tab.Screen 
           name="Mere" 
           component={MoreStackScreen} 

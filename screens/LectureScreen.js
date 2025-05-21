@@ -19,6 +19,7 @@ export default function LectureScreen() {
           `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/events/filter?q=offentlige foredrag`
         );
         const data = await response.json();
+        data.sort((a, b) => new Date(a.date) - new Date(b.date)); // Add this line
         setEvents(data);
       } catch (error) {
         console.error("Error fetching lecture events:", error);
