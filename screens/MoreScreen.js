@@ -1,4 +1,3 @@
-import React from "react";
 import {
   StyleSheet,
   View,
@@ -14,6 +13,7 @@ const MENU_ITEMS = [
   { title: "Gå til Nyhedsbrev", screen: "Nyhedsbrev", icon: "mail" },
   { title: "Offentlige Foredrag", screen: "Lecture", icon: "school" },
   { title: "Hornbæk Jazzklub", screen: "Jazz", icon: "musical-notes" },
+  { title: "Information", screen: "Information", icon: "information-circle" },
 ];
 
 export default function MoreScreen({ navigation }) {
