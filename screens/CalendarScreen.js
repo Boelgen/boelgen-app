@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { StyleSheet, Text, View, ActivityIndicator, FlatList, Image, TouchableOpacity, ScrollView, } from "react-native";
+import { StyleSheet, Text, View, ActivityIndicator, Image, TouchableOpacity, ScrollView, } from "react-native";
 import CalendarPicker from "react-native-calendar-picker";
 import { useFocusEffect } from "@react-navigation/native";
-
 
 export default function CalendarScreen({ navigation }) {
   const [selectedStartDate, setSelectedStartDate] = useState(null);
@@ -81,6 +80,20 @@ export default function CalendarScreen({ navigation }) {
     textStyle: { color: "white" },
   }));
 
+  const CustomButton = ({ title, onPress }) => (
+    <TouchableOpacity
+      style={{
+        backgroundColor: "#1e73be",
+        paddingVertical: 8,
+        paddingHorizontal: 12,
+        borderRadius: 5,
+      }}
+      onPress={onPress}
+    >
+      <Text style={{ color: "#ffffff", fontWeight: "bold" }}>{title}</Text>
+    </TouchableOpacity>
+  );
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Bølgens kalender</Text>
@@ -93,23 +106,17 @@ export default function CalendarScreen({ navigation }) {
         scrollable={false} // Disable scrolling for the calendar
         startFromMonday={true}
         weekdays={["Man", "Tirs", "Ons", "Tors", "Fre", "Lør", "Søn"]}
-        months={[
-          "Januar",
-          "Februar",
-          "Marts",
-          "April",
-          "Maj",
-          "Juni",
-          "Juli",
-          "August",
-          "September",
-          "Oktober",
-          "November",
-          "December",
-        ]}
+        months={["Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December"]}
         previousTitle="Forrige"
         nextTitle="Næste"
+        previousComponent={
+          <CustomButton title="Forrige" onPress={() => this.refCalendar.handleOnPressPrevious()} />
+        }
+        nextComponent={
+          <CustomButton title="Næste" onPress={() => this.refCalendar.handleOnPressNext()} />
+        }
         customDatesStyles={customDatesStyles}
+        ref={(ref) => (this.refCalendar = ref)}
       />
       <View style={styles.selectedDateContainer}>
         <Text>{formatDate(selectedStartDate)}</Text>
