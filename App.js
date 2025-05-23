@@ -32,6 +32,7 @@ import ChatbotScreen from "./screens/ChatbotScreen";
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
 const CalendarStack = createNativeStackNavigator();
+const SearchStack = createNativeStackNavigator();
 const MoreStack = createNativeStackNavigator();
 
 function HomeStackScreen() {
@@ -83,6 +84,32 @@ function CalendarStackScreen() {
         })}
       />
     </CalendarStack.Navigator>
+  );
+}
+
+function SearchStackScreen() {
+  return (
+    <SearchStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <SearchStack.Screen
+        name="Search"
+        component={SearchScreen}
+        options={{ title: "Søg" }}
+      />
+      <SearchStack.Screen
+        name="EventScreen"
+        component={EventScreen}
+        options={({ route }) => ({
+          title:
+            route.params.event.title.length > 20
+              ? route.params.event.title.substring(0, 20) + "..."
+              : route.params.event.title,
+        })}
+      />
+    </SearchStack.Navigator>
   );
 }
 
@@ -194,7 +221,22 @@ export default function App() {
             },
           })}
         />
-        <Tab.Screen name="Søg" component={SearchScreen} />
+        <Tab.Screen 
+          name="Søg" 
+          component={SearchStackScreen} 
+          options={{
+            title: "Søg",
+            unmountOnBlur: true,
+          }}
+          listeners={({ navigation }) => ({
+            tabPress: e => {
+              e.preventDefault();
+              navigation.navigate("Søg", {
+                screen: "Search"
+              });
+            },
+          })}
+        />
         <Tab.Screen name="Chat" component={ChatbotScreen} />
         <Tab.Screen 
           name="Mere" 
