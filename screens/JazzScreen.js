@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, FlatList, ActivityIndicator, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, FlatList, ActivityIndicator, TouchableOpacity} from "react-native";
 
 export default function JazzScreen({ navigation }) {
   const [events, setEvents] = useState([]);
@@ -50,6 +50,7 @@ export default function JazzScreen({ navigation }) {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
