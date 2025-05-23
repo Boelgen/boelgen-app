@@ -1,25 +1,18 @@
 import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  ActivityIndicator,
-} from "react-native";
+import { StyleSheet, Text, View, FlatList, ActivityIndicator, TouchableOpacity } from "react-native";
 
-export default function LectureScreen() {
+export default function LectureScreen({ navigation }) {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch events related to "offentlige foredrag"
     const fetchLectureEvents = async () => {
       try {
         const response = await fetch(
           `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/events/filter?q=offentlige foredrag`
         );
         const data = await response.json();
-        data.sort((a, b) => new Date(a.date) - new Date(b.date)); // Add this line
+        data.sort((a, b) => new Date(a.date) - new Date(b.date));
         setEvents(data);
       } catch (error) {
         console.error("Error fetching lecture events:", error);
@@ -45,11 +38,14 @@ export default function LectureScreen() {
         data={events}
         keyExtractor={(item) => item.event_id.toString()}
         renderItem={({ item }) => (
-          <View style={styles.eventItem}>
+          <TouchableOpacity
+            style={styles.eventItem}
+            onPress={() => navigation.navigate("EventScreen", { event: item })}
+          >
             <Text style={styles.eventTitle}>{item.title}</Text>
             <Text>{item.date}</Text>
             <Text>{item.description}</Text>
-          </View>
+          </TouchableOpacity>
         )}
       />
     </View>

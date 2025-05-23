@@ -120,7 +120,7 @@ function MoreStackScreen() {
         headerShown: false
       }}
     >
-      <MoreStack.Screen name="Mere" component={MoreScreen} options={{ title: "Mere" }} />
+      <MoreStack.Screen name="More" component={MoreScreen} options={{ title: "Mere" }} />
       <MoreStack.Screen name="Activities" component={ActivitiesScreen} options={{ title: "Aktiviteter" }} />
       <MoreStack.Screen name="Workshop" component={WorkshopScreen} options={{ title: "Workshops" }} />
       <MoreStack.Screen name="About" component={AboutScreen} options={{ title: "Om os" }} />
@@ -137,6 +137,16 @@ function MoreStackScreen() {
       <MoreStack.Screen name="Volunteer" component={VolunteerScreen} options={{ title: "Frivillig" }} />
       <MoreStack.Screen name="Chatbot" component={ChatbotScreen} options={{ title: "Chatbot" }} />
       <MoreStack.Screen name="Information" component={InformationScreen} options={{ title: "Information" }} />
+      <MoreStack.Screen
+        name="EventScreen"
+        component={EventScreen}
+        options={({ route }) => ({
+          title:
+            route.params.event.title.length > 20
+              ? route.params.event.title.substring(0, 20) + "..."
+              : route.params.event.title,
+        })}
+      />
     </MoreStack.Navigator>
   );
 }
@@ -249,7 +259,7 @@ export default function App() {
             tabPress: e => {
               e.preventDefault();
               navigation.navigate("Mere", {
-                screen: "Mere"
+                screen: "More"
               });
             },
           })}

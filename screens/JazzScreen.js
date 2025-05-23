@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  ActivityIndicator,
-} from "react-native";
+import { StyleSheet, Text, View, FlatList, ActivityIndicator, TouchableOpacity } from "react-native";
 
-export default function JazzScreen() {
+export default function JazzScreen({ navigation }) {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch events related to "offentlige foredrag"
     const fetchJazzEvents = async () => {
       try {
         const response = await fetch(
@@ -44,17 +37,19 @@ export default function JazzScreen() {
         data={events}
         keyExtractor={(item) => item.event_id.toString()}
         renderItem={({ item }) => (
-          <View style={styles.eventItem}>
+          <TouchableOpacity
+            style={styles.eventItem}
+            onPress={() => navigation.navigate("EventScreen", { event: item })}
+          >
             <Text style={styles.eventTitle}>{item.title}</Text>
             <Text>{item.date}</Text>
             <Text>{item.description}</Text>
-          </View>
+          </TouchableOpacity>
         )}
       />
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
