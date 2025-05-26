@@ -7,12 +7,8 @@ export default function EventScreen({ route, navigation }) {
   const [imageSize, setImageSize] = useState({ width: Dimensions.get("window").width, height: 200 });
   const deviceWidth = Dimensions.get("window").width;
 
-  React.useLayoutEffect(() => {
-    navigation.setOptions({
-      title:
-        event.title.length > 20 ? event.title.substring(0, 20) + "..." : event.title,
-    });
-  }, [navigation, event.title]);
+  // Remove the useLayoutEffect that was setting the header title
+  // The navigation stack will handle this now
 
   useEffect(() => {
     if (event.image) {
