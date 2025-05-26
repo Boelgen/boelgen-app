@@ -64,7 +64,8 @@ export default function CalendarScreen({ navigation }) {
       month: "long",
       year: "numeric",
     };
-    return new Intl.DateTimeFormat("da-DK", options).format(date);
+    let formattedDate = new Intl.DateTimeFormat("da-DK", options).format(date);
+    return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
   };
 
   const handleEventPress = (event) => {
@@ -120,8 +121,8 @@ export default function CalendarScreen({ navigation }) {
         ref={(ref) => (this.refCalendar = ref)}
       />
       <View style={styles.selectedDateContainer}>
-        <Text>{formatDate(selectedStartDate)}</Text>
-        {selectedEvents.length > 0 ? (
+        <Text style={styles.selectedDateText}>{formatDate(selectedStartDate)}</Text>
+        {selectedEvents.length > 0 && (
           <ScrollView style={styles.eventsScrollView}>
             {selectedEvents.map((event) => (
               <EventCard
@@ -131,8 +132,6 @@ export default function CalendarScreen({ navigation }) {
               />
             ))}
           </ScrollView>
-        ) : (
-          <Text>Valgte dag er tom.</Text>
         )}
       </View>
     </View>
@@ -154,6 +153,11 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 20,
     paddingHorizontal: 16,
+  },
+  selectedDateText: {
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 10,
   },
   eventsScrollView: {
     flex: 1,
