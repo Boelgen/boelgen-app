@@ -10,6 +10,7 @@ import {
   Platform,
 } from "react-native";
 import axios from "axios";
+import Markdown from "react-native-markdown-display";
 
 export default function ChatbotScreen() {
   const [messages, setMessages] = useState([
@@ -308,22 +309,41 @@ Svar altid på dansk og vær hjælpsom.
     >
       <View style={styles.card}>
         <ScrollView style={{ width: "100%" }}>
-          {messages.map((msg, idx) => (
-            <Text
-              key={idx}
-              style={{
-                alignSelf: msg.from === "user" ? "flex-end" : "flex-start",
-                backgroundColor: msg.from === "user" ? "#1e73be" : "#eee",
-                color: msg.from === "user" ? "#fff" : "#333",
-                borderRadius: 8,
-                padding: 8,
-                marginVertical: 4,
-                maxWidth: "80%",
-              }}
-            >
-              {msg.text}
-            </Text>
-          ))}
+          {messages.map((msg, idx) =>
+            msg.from === "bot" ? (
+              <Markdown
+                key={idx}
+                style={{
+                  body: {
+                    alignSelf: "flex-start",
+                    backgroundColor: "#eee",
+                    color: "#333",
+                    borderRadius: 8,
+                    padding: 8,
+                    marginVertical: 4,
+                    maxWidth: "80%",
+                  },
+                }}
+              >
+                {msg.text}
+              </Markdown>
+            ) : (
+              <Text
+                key={idx}
+                style={{
+                  alignSelf: "flex-end",
+                  backgroundColor: "#1e73be",
+                  color: "#fff",
+                  borderRadius: 8,
+                  padding: 8,
+                  marginVertical: 4,
+                  maxWidth: "80%",
+                }}
+              >
+                {msg.text}
+              </Text>
+            )
+          )}
         </ScrollView>
         <View style={{ flexDirection: "row", marginTop: 10 }}>
           <TextInput
