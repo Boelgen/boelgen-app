@@ -1,15 +1,7 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  FlatList,
-  Image,
-  Linking,
-} from "react-native";
+import { StyleSheet, Text, View, TextInput, FlatList, Image, TouchableOpacity } from "react-native";
 
-export default function SearchScreen() {
+export default function SearchScreen({ navigation }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [events, setEvents] = useState([]);
 
@@ -30,7 +22,6 @@ export default function SearchScreen() {
     }
   };
 
-  // Helper: Group events by month
   const groupEventsByMonth = (events) => {
     const groupedEvents = {};
     events.forEach((event) => {
@@ -45,7 +36,6 @@ export default function SearchScreen() {
     return groupedEvents;
   };
 
-  // Helper: Filter events from today
   const filterEventsFromToday = (events) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -56,7 +46,6 @@ export default function SearchScreen() {
     });
   };
 
-  // Sort events by date before grouping
   const filteredEvents = filterEventsFromToday(
     [...events].sort((a, b) => new Date(a.date) - new Date(b.date))
   );
@@ -90,7 +79,11 @@ export default function SearchScreen() {
               <View style={styles.redLine} />
             </View>
             {item[1].map((event) => (
-              <View style={styles.eventCard} key={event.event_id.toString()}>
+              <TouchableOpacity
+                style={styles.eventCard}
+                key={event.event_id.toString()}
+                onPress={() => navigation.navigate("EventScreen", { event })}
+              >
                 <View style={{ position: "relative" }}>
                   <Image
                     source={{ uri: event.image }}
@@ -118,14 +111,14 @@ export default function SearchScreen() {
                     {event.description}
                   </Text>
                   <Text style={styles.eventPrice}>Pris: {event.price}</Text>
-                  <Text
+                  <TouchableOpacity
                     style={styles.readMoreButton}
-                    onPress={() => Linking.openURL(event.ticket_link)}
+                    onPress={() => navigation.navigate("EventScreen", { event })}
                   >
-                    LÆS MERE
-                  </Text>
+                    <Text style={styles.readMoreButtonText}>LÆS MERE</Text>
+                  </TouchableOpacity>
                 </View>
-              </View>
+              </TouchableOpacity>
             ))}
           </View>
         )}
@@ -147,9 +140,9 @@ const styles = StyleSheet.create({
     width: "92%",
     alignSelf: "center",
     padding: 0,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
+    boxShadowColor: "#000",
+    boxShadowOffset: { width: 0, height: 2 },
+    boxShadowOpacity: 0.1,
     elevation: 3,
     flexDirection: "column",
     alignItems: "stretch",
@@ -208,9 +201,9 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: -32,
     padding: 16,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
+    boxShadowColor: "#000",
+    boxShadowOffset: { width: 0, height: 2 },
+    boxShadowOpacity: 0.1,
     elevation: 3,
     zIndex: 2,
   },
