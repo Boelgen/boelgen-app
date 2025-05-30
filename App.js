@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { TouchableOpacity } from "react-native";
 
 // Import the screens
 import HomeScreen from "./screens/HomeScreen";
@@ -35,12 +36,32 @@ const CalendarStack = createNativeStackNavigator();
 const SearchStack = createNativeStackNavigator();
 const MoreStack = createNativeStackNavigator();
 
+function screenOptionsWithBackButton({ navigation, route }) {
+  // show back arrow for non-main tab screens
+  const isMainTabScreen = route.name === "Home" || route.name === "Calendar" || route.name === "Search" || route.name === "More";
+  
+  return {
+    headerShown: true,
+    headerLeft: !isMainTabScreen ? () => (
+      <TouchableOpacity 
+        onPress={() => navigation.goBack()} 
+        style={{ marginLeft: 10 }}
+        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+      >
+        <Ionicons name="arrow-back" size={24} color="#fff" />
+      </TouchableOpacity>
+    ) : undefined,
+    headerStyle: {
+      backgroundColor: "#1e73be",
+    },
+    headerTintColor: "#fff",
+  };
+}
+
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator
-      screenOptions={{
-        headerShown: false
-      }}
+      screenOptions={screenOptionsWithBackButton}
     >
       <HomeStack.Screen
         name="Home"
@@ -52,9 +73,9 @@ function HomeStackScreen() {
         component={EventScreen}
         options={({ route }) => ({
           title:
-            route.params.event.title.length > 20
+            route.params?.event?.title?.length > 20
               ? route.params.event.title.substring(0, 20) + "..."
-              : route.params.event.title,
+              : route.params?.event?.title || "Event",
         })}
       />
     </HomeStack.Navigator>
@@ -64,9 +85,7 @@ function HomeStackScreen() {
 function CalendarStackScreen() {
   return (
     <CalendarStack.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}
+      screenOptions={screenOptionsWithBackButton}
     >
       <CalendarStack.Screen
         name="Calendar"
@@ -78,9 +97,9 @@ function CalendarStackScreen() {
         component={EventScreen}
         options={({ route }) => ({
           title:
-            route.params.event.title.length > 20
+            route.params?.event?.title?.length > 20
               ? route.params.event.title.substring(0, 20) + "..."
-              : route.params.event.title,
+              : route.params?.event?.title || "Event",
         })}
       />
     </CalendarStack.Navigator>
@@ -90,9 +109,7 @@ function CalendarStackScreen() {
 function SearchStackScreen() {
   return (
     <SearchStack.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}
+      screenOptions={screenOptionsWithBackButton}
     >
       <SearchStack.Screen
         name="Search"
@@ -104,9 +121,9 @@ function SearchStackScreen() {
         component={EventScreen}
         options={({ route }) => ({
           title:
-            route.params.event.title.length > 20
+            route.params?.event?.title?.length > 20
               ? route.params.event.title.substring(0, 20) + "..."
-              : route.params.event.title,
+              : route.params?.event?.title || "Event",
         })}
       />
     </SearchStack.Navigator>
@@ -116,9 +133,7 @@ function SearchStackScreen() {
 function MoreStackScreen() {
   return (
     <MoreStack.Navigator
-      screenOptions={{
-        headerShown: false
-      }}
+      screenOptions={screenOptionsWithBackButton}
     >
       <MoreStack.Screen name="More" component={MoreScreen} options={{ title: "Mere" }} />
       <MoreStack.Screen name="Activities" component={ActivitiesScreen} options={{ title: "Aktiviteter" }} />
@@ -142,9 +157,9 @@ function MoreStackScreen() {
         component={EventScreen}
         options={({ route }) => ({
           title:
-            route.params.event.title.length > 20
+            route.params?.event?.title?.length > 20
               ? route.params.event.title.substring(0, 20) + "..."
-              : route.params.event.title,
+              : route.params?.event?.title || "Event",
         })}
       />
     </MoreStack.Navigator>
@@ -196,7 +211,8 @@ export default function App() {
             backgroundColor: "#FFFF",
           },
           headerTintColor: "#fff",
-          unmountOnBlur: true  // reset screen state when switching tabs
+          unmountOnBlur: true,  // reset screen state when switching tabs
+          headerShown: false, // Hide tab navigator headers sincethey're handled in stacks
         })}
       >
         <Tab.Screen 
@@ -247,7 +263,18 @@ export default function App() {
             },
           })}
         />
-        <Tab.Screen name="Chat" component={ChatbotScreen} />
+        <Tab.Screen 
+          name="Chat" 
+          component={ChatbotScreen}
+          options={{
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: "#1e73be",
+            },
+            headerTintColor: "#fff",
+            title: "Chat",
+          }}
+        />
         <Tab.Screen 
           name="Mere" 
           component={MoreStackScreen} 
