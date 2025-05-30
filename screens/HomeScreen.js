@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, ActivityIndicator, FlatList } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ActivityIndicator,
+  FlatList,
+} from "react-native";
 import EventCard from "../components/EventCard";
 
 export default function HomeScreen({ navigation }) {
@@ -44,7 +50,7 @@ export default function HomeScreen({ navigation }) {
   const filterEventsFromToday = (events) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0); // Today set to midnight for comparison
-    return events.filter(event => {
+    return events.filter((event) => {
       const eventDate = new Date(event.date);
       eventDate.setHours(0, 0, 0, 0); // Event set to midnight to compare
       return eventDate >= today;
@@ -53,7 +59,7 @@ export default function HomeScreen({ navigation }) {
 
   const handleEventPress = (event) => {
     // Navigate to EventScreen in current tab stack
-    navigation.navigate('EventScreen', { event });
+    navigation.navigate("EventScreen", { event });
   };
 
   if (loading) {

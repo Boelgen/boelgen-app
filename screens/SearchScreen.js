@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput, FlatList } from "react-native";
+import { StyleSheet, Text, View, TextInput, ScrollView } from "react-native";
 import EventCard from "../components/EventCard";
 
 export default function SearchScreen({ navigation }) {
@@ -47,49 +47,103 @@ export default function SearchScreen({ navigation }) {
     });
   };
 
+  // Filter for past events
+  const filterEventsBeforeToday = (events) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return events.filter((event) => {
+      const eventDate = new Date(event.date);
+      eventDate.setHours(0, 0, 0, 0);
+      return eventDate < today;
+    });
+  };
+
   const filteredEvents = filterEventsFromToday(
     [...events].sort((a, b) => new Date(a.date) - new Date(b.date))
   );
 
+  const pastEvents = filterEventsBeforeToday(
+    [...events].sort((a, b) => new Date(b.date) - new Date(a.date))
+  );
+
   return (
-    <View style={styles.container}>
-      <TextInput
-        style={{
-          marginTop: 50,
-          padding: 10,
-          borderRadius: 8,
-          backgroundColor: "#f0f0f0",
-          height: 60,
-          borderColor: "gray",
-          borderWidth: 1,
-          width: "80%",
-          marginBottom: 20,
-        }}
-        placeholder="Søg..."
-        value={searchQuery}
-        onChangeText={handleSearch}
-      />
-      <FlatList
-        data={Object.entries(groupEventsByMonth(filteredEvents))}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => (
-          <View>
-            <View style={styles.monthHeader}>
-              <View style={styles.redLine} />
-              <Text style={styles.monthText}>{item[0]}</Text>
-              <View style={styles.redLine} />
+    <ScrollView style={{ flex: 1, backgroundColor: "#fff" }}>
+      <View style={styles.container}>
+        <TextInput
+          style={{
+            marginTop: 50,
+            padding: 10,
+            borderRadius: 8,
+            backgroundColor: "#f0f0f0",
+            height: 60,
+            borderColor: "gray",
+            borderWidth: 1,
+            width: "80%",
+            marginBottom: 20,
+            alignSelf: "center",
+          }}
+          placeholder="Søg..."
+          value={searchQuery}
+          onChangeText={handleSearch}
+        />
+        <Text
+          style={{
+            fontSize: 28,
+            fontWeight: "bold",
+            marginBottom: 20,
+            textAlign: "center",
+          }}
+        >
+          Kommende Arrangementer
+        </Text>
+        {Object.entries(groupEventsByMonth(filteredEvents)).map(
+          ([month, events]) => (
+            <View key={month}>
+              <View style={styles.monthHeader}>
+                <View style={styles.redLine} />
+                <Text style={styles.monthText}>{month}</Text>
+                <View style={styles.redLine} />
+              </View>
+              {events.map((event) => (
+                <EventCard
+                  key={event.event_id.toString()}
+                  event={event}
+                  onPress={() => navigation.navigate("EventScreen", { event })}
+                />
+              ))}
             </View>
-            {item[1].map((event) => (
-              <EventCard
-                key={event.event_id.toString()}
-                event={event}
-                onPress={() => navigation.navigate("EventScreen", { event })}
-              />
-            ))}
-          </View>
+          )
         )}
-      />
-    </View>
+        <Text
+          style={{
+            fontSize: 28,
+            fontWeight: "bold",
+            marginBottom: 20,
+            textAlign: "center",
+          }}
+        >
+          Afholdte Arrangementer
+        </Text>
+        {Object.entries(groupEventsByMonth(pastEvents)).map(
+          ([month, events]) => (
+            <View key={month}>
+              <View style={styles.monthHeader}>
+                <View style={styles.redLine} />
+                <Text style={styles.monthText}>{month}</Text>
+                <View style={styles.redLine} />
+              </View>
+              {events.map((event) => (
+                <EventCard
+                  key={event.event_id.toString()}
+                  event={event}
+                  onPress={() => navigation.navigate("EventScreen", { event })}
+                />
+              ))}
+            </View>
+          )
+        )}
+      </View>
+    </ScrollView>
   );
 }
 
@@ -97,8 +151,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    width: "100%",
   },
   monthHeader: {
     flexDirection: "row",
