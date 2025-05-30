@@ -1,10 +1,4 @@
-import {
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  Text,
-  ScrollView,
-} from "react-native";
+import { StyleSheet, View, TouchableOpacity, Text, ScrollView, Linking, } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 const MENU_ITEMS = [
@@ -38,6 +32,22 @@ export default function MoreScreen({ navigation }) {
             </TouchableOpacity>
           ))}
         </ScrollView>
+        
+        <View style={styles.socialMediaContainer}>
+          <TouchableOpacity
+            style={styles.socialButton}
+            onPress={() => Linking.openURL("https://www.facebook.com/boelgendk/")}
+          >
+            <Ionicons name="logo-facebook" size={32} color="#4267B2" />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.socialButton}
+            onPress={() => Linking.openURL("https://www.youtube.com/@kulturhusetblgen1188")}
+          >
+            <Ionicons name="logo-youtube" size={32} color="#FF0000" />
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -94,5 +104,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "600",
     letterSpacing: 0.5,
+  },
+  socialMediaContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: 20,
+  },
+  socialButton: {
+    marginHorizontal: 15,
   },
 });
