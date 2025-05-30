@@ -86,61 +86,74 @@ export default function SearchScreen({ navigation }) {
           value={searchQuery}
           onChangeText={handleSearch}
         />
-        <Text
-          style={{
-            fontSize: 28,
-            fontWeight: "bold",
-            marginBottom: 20,
-            textAlign: "center",
-          }}
-        >
-          Kommende Arrangementer
-        </Text>
-        {Object.entries(groupEventsByMonth(filteredEvents)).map(
-          ([month, events]) => (
-            <View key={month}>
-              <View style={styles.monthHeader}>
-                <View style={styles.redLine} />
-                <Text style={styles.monthText}>{month}</Text>
-                <View style={styles.redLine} />
-              </View>
-              {events.map((event) => (
-                <EventCard
-                  key={event.event_id.toString()}
-                  event={event}
-                  onPress={() => navigation.navigate("EventScreen", { event })}
-                />
-              ))}
-            </View>
-          )
+        {Object.keys(groupEventsByMonth(filteredEvents)).length > 0 && (
+          <>
+            <Text
+              style={{
+                fontSize: 28,
+                fontWeight: "bold",
+                marginBottom: 20,
+                textAlign: "center",
+              }}
+            >
+              Kommende Arrangementer
+            </Text>
+            {Object.entries(groupEventsByMonth(filteredEvents)).map(
+              ([month, events]) => (
+                <View key={month}>
+                  <View style={styles.monthHeader}>
+                    <View style={styles.redLine} />
+                    <Text style={styles.monthText}>{month}</Text>
+                    <View style={styles.redLine} />
+                  </View>
+                  {events.map((event) => (
+                    <EventCard
+                      key={event.event_id.toString()}
+                      event={event}
+                      onPress={() =>
+                        navigation.navigate("EventScreen", { event })
+                      }
+                    />
+                  ))}
+                </View>
+              )
+            )}
+          </>
         )}
-        <Text
-          style={{
-            fontSize: 28,
-            fontWeight: "bold",
-            marginBottom: 20,
-            textAlign: "center",
-          }}
-        >
-          Afholdte Arrangementer
-        </Text>
-        {Object.entries(groupEventsByMonth(pastEvents)).map(
-          ([month, events]) => (
-            <View key={month}>
-              <View style={styles.monthHeader}>
-                <View style={styles.redLine} />
-                <Text style={styles.monthText}>{month}</Text>
-                <View style={styles.redLine} />
-              </View>
-              {events.map((event) => (
-                <EventCard
-                  key={event.event_id.toString()}
-                  event={event}
-                  onPress={() => navigation.navigate("EventScreen", { event })}
-                />
-              ))}
-            </View>
-          )
+
+        {Object.keys(groupEventsByMonth(pastEvents)).length > 0 && (
+          <>
+            <Text
+              style={{
+                fontSize: 28,
+                fontWeight: "bold",
+                marginBottom: 20,
+                textAlign: "center",
+              }}
+            >
+              Afholdte Arrangementer
+            </Text>
+            {Object.entries(groupEventsByMonth(pastEvents)).map(
+              ([month, events]) => (
+                <View key={month}>
+                  <View style={styles.monthHeader}>
+                    <View style={styles.redLine} />
+                    <Text style={styles.monthText}>{month}</Text>
+                    <View style={styles.redLine} />
+                  </View>
+                  {events.map((event) => (
+                    <EventCard
+                      key={event.event_id.toString()}
+                      event={event}
+                      onPress={() =>
+                        navigation.navigate("EventScreen", { event })
+                      }
+                    />
+                  ))}
+                </View>
+              )
+            )}
+          </>
         )}
       </View>
     </ScrollView>
