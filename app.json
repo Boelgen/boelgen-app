@@ -5,8 +5,13 @@
     "version": "1.0.0",
     "owner": "geargrind",
     "newArchEnabled": true,
+    "icon": "./assets/icon.png",
     "android": {
-      "package": "com.geargrind.boelgenapp"
+      "package": "com.geargrind.boelgenapp",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
     },
     "ios": {
       "bundleIdentifier": "com.geargrind.boelgenapp"

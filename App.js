@@ -10,7 +10,7 @@ import { TouchableOpacity } from "react-native";
 import HomeScreen from "./screens/HomeScreen";
 import CalendarScreen from "./screens/CalendarScreen";
 import SearchScreen from "./screens/SearchScreen";
-import AboutScreen from "./screens/AboutScreen";
+import LibraryScreen from "./screens/LibraryScreen";
 import WorkshopScreen from "./screens/WorkshopScreen";
 import MoreScreen from "./screens/MoreScreen";
 import InformationScreen from "./screens/InformationScreen";
@@ -138,18 +138,18 @@ function MoreStackScreen() {
       <MoreStack.Screen name="More" component={MoreScreen} options={{ title: "Mere" }} />
       <MoreStack.Screen name="Activities" component={ActivitiesScreen} options={{ title: "Aktiviteter" }} />
       <MoreStack.Screen name="Workshop" component={WorkshopScreen} options={{ title: "Workshops" }} />
-      <MoreStack.Screen name="About" component={AboutScreen} options={{ title: "Om os" }} />
+      <MoreStack.Screen name="Library" component={LibraryScreen} options={{ title: "Bibliotek" }} />
       <MoreStack.Screen name="Nyhedsbrev" component={NewsLetterScreen} options={{ title: "Nyhedsbrev" }} />
       <MoreStack.Screen name="Lecture" component={LectureScreen} options={{ title: "Offentlige Foredrag" }} />
       <MoreStack.Screen name="Jazz" component={JazzScreen} options={{ title: "Hornbæk Jazzklub" }} />
       <MoreStack.Screen name="FilmClub" component={FilmClubScreen} options={{ title: "Filmklub" }} />
       <MoreStack.Screen name="Idea" component={IdeaScreen} options={{ title: "Idéer" }} />
-      <MoreStack.Screen name="Knitting" component={KnittingScreen} options={{ title: "Strikning" }} />
-      <MoreStack.Screen name="MediaStudio" component={MediaStudioScreen} options={{ title: "Multimedie" }} />
-      <MoreStack.Screen name="Meeting" component={MeetingRoomScreen} options={{ title: "Møder" }} />
-      <MoreStack.Screen name="RecordingStudio" component={RecordingStudioScreen} options={{ title: "Lydstudie" }} />
-      <MoreStack.Screen name="ReadingClub" component={ReadingClubScreen} options={{ title: "Læseklub" }} />
-      <MoreStack.Screen name="Volunteer" component={VolunteerScreen} options={{ title: "Frivillig" }} />
+      <MoreStack.Screen name="Knitting" component={KnittingScreen} options={{ title: "Strik og hækling" }} />
+      <MoreStack.Screen name="MediaStudio" component={MediaStudioScreen} options={{ title: "Multimedieværksted" }} />
+      <MoreStack.Screen name="Meeting" component={MeetingRoomScreen} options={{ title: "Mødelokale" }} />
+      <MoreStack.Screen name="RecordingStudio" component={RecordingStudioScreen} options={{ title: "Lydstudie og talentudvikling" }} />
+      <MoreStack.Screen name="ReadingClub" component={ReadingClubScreen} options={{ title: "Læsekredse" }} />
+      <MoreStack.Screen name="Volunteer" component={VolunteerScreen} options={{ title: "Frivillige / Bølgevenner" }} />
       <MoreStack.Screen name="Chatbot" component={ChatbotScreen} options={{ title: "Chatbot" }} />
       <MoreStack.Screen name="Information" component={InformationScreen} options={{ title: "Information" }} />
       <MoreStack.Screen
