@@ -98,7 +98,6 @@ export default function CalendarScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Bølgens kalender</Text>
       <CalendarPicker
         onDateChange={onDateChange}
         todayBackgroundColor="#ffffff"
@@ -142,12 +141,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-  },
-  header: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 20,
-    textAlign: "center",
+    paddingTop: 10,
   },
   selectedDateContainer: {
     flex: 1,
