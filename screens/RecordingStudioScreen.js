@@ -1,11 +1,7 @@
-import { StyleSheet, Text, View, Image, ScrollView, Linking } from "react-native";
+import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 import { WebView } from 'react-native-webview';
 
 export default function RecordingStudioScreen() {
-  const handlePhonePress = (phoneNumber) => {
-    Linking.openURL(`tel:${phoneNumber}`);
-  };
-
   return (
     <ScrollView
       style={styles.container}
