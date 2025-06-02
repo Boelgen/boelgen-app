@@ -10,7 +10,7 @@ import { TouchableOpacity } from "react-native";
 import HomeScreen from "./screens/HomeScreen";
 import CalendarScreen from "./screens/CalendarScreen";
 import SearchScreen from "./screens/SearchScreen";
-import AboutScreen from "./screens/AboutScreen";
+import LibraryScreen from "./screens/LibraryScreen";
 import WorkshopScreen from "./screens/WorkshopScreen";
 import MoreScreen from "./screens/MoreScreen";
 import InformationScreen from "./screens/InformationScreen";
@@ -138,7 +138,7 @@ function MoreStackScreen() {
       <MoreStack.Screen name="More" component={MoreScreen} options={{ title: "Mere" }} />
       <MoreStack.Screen name="Activities" component={ActivitiesScreen} options={{ title: "Aktiviteter" }} />
       <MoreStack.Screen name="Workshop" component={WorkshopScreen} options={{ title: "Workshops" }} />
-      <MoreStack.Screen name="About" component={AboutScreen} options={{ title: "Om os" }} />
+      <MoreStack.Screen name="Library" component={LibraryScreen} options={{ title: "Bibliotek" }} />
       <MoreStack.Screen name="Nyhedsbrev" component={NewsLetterScreen} options={{ title: "Nyhedsbrev" }} />
       <MoreStack.Screen name="Lecture" component={LectureScreen} options={{ title: "Offentlige Foredrag" }} />
       <MoreStack.Screen name="Jazz" component={JazzScreen} options={{ title: "Hornbæk Jazzklub" }} />

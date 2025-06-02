@@ -15,7 +15,7 @@ const ACTIVITIES = [
   { title: "Mødelokale", screen: "Meeting", icon: "people" },
   { title: "Gode ideer?", screen: "Idea", icon: "bulb" },
   { title: "Frivillige / Bølgevenner", screen: "Volunteer", icon: "hand-left" },
-  { title: "Om os", screen: "About", icon: "information-circle" },
+  { title: "Bibliotek", screen: "Library", icon: "library-outline" },
 ];
 
 export default function ActivitiesScreen({ navigation }) {
