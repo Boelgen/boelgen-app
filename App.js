@@ -144,12 +144,12 @@ function MoreStackScreen() {
       <MoreStack.Screen name="Jazz" component={JazzScreen} options={{ title: "Hornbæk Jazzklub" }} />
       <MoreStack.Screen name="FilmClub" component={FilmClubScreen} options={{ title: "Filmklub" }} />
       <MoreStack.Screen name="Idea" component={IdeaScreen} options={{ title: "Idéer" }} />
-      <MoreStack.Screen name="Knitting" component={KnittingScreen} options={{ title: "Strikning" }} />
-      <MoreStack.Screen name="MediaStudio" component={MediaStudioScreen} options={{ title: "Multimedie" }} />
-      <MoreStack.Screen name="Meeting" component={MeetingRoomScreen} options={{ title: "Møder" }} />
-      <MoreStack.Screen name="RecordingStudio" component={RecordingStudioScreen} options={{ title: "Lydstudie" }} />
-      <MoreStack.Screen name="ReadingClub" component={ReadingClubScreen} options={{ title: "Læseklub" }} />
-      <MoreStack.Screen name="Volunteer" component={VolunteerScreen} options={{ title: "Frivillig" }} />
+      <MoreStack.Screen name="Knitting" component={KnittingScreen} options={{ title: "Strik og hækling" }} />
+      <MoreStack.Screen name="MediaStudio" component={MediaStudioScreen} options={{ title: "Multimedieværksted" }} />
+      <MoreStack.Screen name="Meeting" component={MeetingRoomScreen} options={{ title: "Mødelokale" }} />
+      <MoreStack.Screen name="RecordingStudio" component={RecordingStudioScreen} options={{ title: "Lydstudie og talentudvikling" }} />
+      <MoreStack.Screen name="ReadingClub" component={ReadingClubScreen} options={{ title: "Læsekredse" }} />
+      <MoreStack.Screen name="Volunteer" component={VolunteerScreen} options={{ title: "Frivillige / Bølgevenner" }} />
       <MoreStack.Screen name="Chatbot" component={ChatbotScreen} options={{ title: "Chatbot" }} />
       <MoreStack.Screen name="Information" component={InformationScreen} options={{ title: "Information" }} />
       <MoreStack.Screen

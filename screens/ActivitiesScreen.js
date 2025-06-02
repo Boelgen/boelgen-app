@@ -9,12 +9,13 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 
 const ACTIVITIES = [
-  { title: "Om os", screen: "About", icon: "information-circle" },
+  { title: "Strik og hækling", screen: "Knitting", icon: "shirt" },
   { title: "Filmklub", screen: "FilmClub", icon: "film" },
-  { title: "Strikning", screen: "Knitting", icon: "shirt" },
-  { title: "Læseklub", screen: "ReadingClub", icon: "book" },
-  { title: "Møder", screen: "Meeting", icon: "people" },
-  { title: "Idéer", screen: "Idea", icon: "bulb" },
+  { title: "Bølgens læsekredse", screen: "ReadingClub", icon: "book" },
+  { title: "Mødelokale", screen: "Meeting", icon: "people" },
+  { title: "Gode ideer?", screen: "Idea", icon: "bulb" },
+  { title: "Frivillige / Bølgevenner", screen: "Volunteer", icon: "hand-left" },
+  { title: "Om os", screen: "About", icon: "information-circle" },
 ];
 
 export default function ActivitiesScreen({ navigation }) {
