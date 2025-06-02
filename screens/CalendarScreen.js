@@ -43,8 +43,6 @@ export default function CalendarScreen({ navigation }) {
     }, [resetSelectedDate])
   );
 
-  const startDate = selectedStartDate ? selectedStartDate.toString() : "";
-
   const getEventsForDate = (date) => {
     return events.filter(
       (event) => new Date(event.date).toDateString() === date.toDateString()
