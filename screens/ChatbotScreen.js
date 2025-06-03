@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import prompt from "../prompt";
 import {
   StyleSheet,
@@ -21,6 +21,14 @@ export default function ChatbotScreen() {
     },
   ]);
   const [input, setInput] = useState("");
+
+  const scrollViewRef = useRef(null);
+
+  useEffect(() => {
+    if (scrollViewRef.current) {
+      scrollViewRef.current.scrollToEnd({ animated: true });
+    }
+  }, [messages]);
 
   const GEMINI_API_KEY = process.env.EXPO_PUBLIC_GEMINI_API_KEY;
   const today = new Date().toLocaleDateString("da-DK", {
@@ -89,10 +97,10 @@ Svar altid på dansk og vær hjælpsom.
     <KeyboardAvoidingView
       style={styles.background}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      keyboardVerticalOffset={80} // adjust if you have a header
+      keyboardVerticalOffset={80}
     >
       <View style={styles.card}>
-        <ScrollView style={{ width: "100%" }}>
+        <ScrollView style={{ width: "100%" }} ref={scrollViewRef}>
           {messages.map((msg, idx) =>
             msg.from === "bot" ? (
               <Markdown
