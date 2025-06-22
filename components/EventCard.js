@@ -49,13 +49,15 @@ const styles = StyleSheet.create({
   },
   readMoreButton: {
     backgroundColor: "#e53935",
-    color: "#fff",
     paddingVertical: 8,
     paddingHorizontal: 16,
-    textAlign: "center",
-    fontWeight: "bold",
     overflow: "hidden",
     alignSelf: "flex-start",
+  },
+  readMoreButtonText: {
+    color: "#fff",
+    textAlign: "center",
+    fontWeight: "bold",
   },
   eventContent: {
     backgroundColor: "#f2f2f2",

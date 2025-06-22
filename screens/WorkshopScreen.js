@@ -10,7 +10,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 const WORKSHOPS = [
   { title: "Multimedieværksted", screen: "MediaStudio", icon: "camera" },
-  { title: "Lydstudie og talentudvikling", screen: "RecordingStudio", icon: "musical-notes" },
+  { title: "Lydstudie", screen: "RecordingStudio", icon: "musical-notes" },
 ];
 
 export default function WorkshopScreen({ navigation }) {
